@@ -437,9 +437,13 @@ color: #000000; /* Corrigido: Usar cor Secundária para contraste com o fundo es
         width: 100%;
         max-width: 280px; /* Limita largura do botão */
     }
+
+    .header-left .logo-img{
+        margin: 0 auto;
+        display: block;
+    }
     .logo-img {
         max-width: 80px; /* Logo menor no mobile */
-        justify-content: center;
     }
 
     .hero {
