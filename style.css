@@ -439,6 +439,7 @@ color: #000000; /* Corrigido: Usar cor Secundária para contraste com o fundo es
     }
     .logo-img {
         max-width: 80px; /* Logo menor no mobile */
+        justify-content: center;
     }
 
     .hero {
