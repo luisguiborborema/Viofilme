@@ -1,0 +1,545 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.6;
+    color: #000000;
+    background-color: #f1f1f1; /* Um fundo bem claro */
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- Header --- */
+header {
+    background-color: #f1f1f1; /* Fundo branco para o header */
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-img { /* Ajustei para apenas .logo-img se a imagem não estiver dentro de header .logo-img */
+    max-width: 100px; /* Tamanho da logo no header */
+    height: auto;
+    display: block;
+}
+
+/* Navegação Principal */
+.main-nav {
+    flex-grow: 1; /* Ocupa o espaço central */
+    display: flex;
+    justify-content: center; /* Centraliza os itens do menu */
+    align-items: center;
+}
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px; /* Espaço entre os itens do menu */
+}
+.main-nav ul li a {
+    text-decoration: none;
+    color: #000000; /* Cor dos links do menu */
+    font-weight: 500;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+/* No seu style.css, adicione esta regra */
+.main-nav ul li a.active {
+    color: #458f8e; /* Cor principal para o link ativo */
+    font-weight: 700; /* Mais negrito */
+    border-bottom: 2px solid #458f8e; /* Opcional: um sublinhado para destaque */
+    padding-bottom: 3px; /* Espaçamento para o sublinhado */
+}
+.main-nav ul li a:hover {
+    color: #458f8e; /* Exemplo de cor de hover */
+}
+
+/* Botão CTA no Header */
+.cta-button {
+    display: inline-block;
+    background-color: #458f8e; /* Cor do CTA */
+    color: #000000;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.cta-button:hover {
+    background-color: #3a8a89;
+    transform: translateY(-2px);
+}
+.header-cta {
+    margin-left: 20px; /* Espaçamento à esquerda do botão CTA do header */
+    padding: 10px 20px; /* Botão menor no header */
+    font-size: 0.85em;
+}
+
+/* --- Seção Hero --- */
+.hero {
+    background: linear-gradient(135deg, #3a8a89, #458f8e); /* Azul Marinho Escuro para o fundo do Hero */
+    color: #f1f1f1; /* Texto branco no Hero */
+    padding: 100px 20px; /* Padding generoso */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 600px; /* Altura mínima para o Hero */
+    position: relative; /* Para possíveis efeitos visuais futuros */
+}
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1; /* Garante que o conteúdo fique sobre qualquer background visual */
+}
+.hero-intro {
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #f1f1f1; /* Branco para contraste */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.hero h1 {
+    font-size: 4em; /* Viofilme */ 
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #f1f1f1;
+}
+.hero h2 {
+    font-size: 2.5em; /* Criamos marketing que vende... */ 
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 30px;
+    color: #f1f1f1; /* Sub-título */
+}
+.hero-subheadline {
+    font-size: 1.4em; /* Unimos estratégia... */ 
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    color: #f1f1f1; /* Texto secundário/claro */
+}
+.main-cta { /* Botão CTA principal no Hero */
+    padding: 18px 40px;
+    font-size: 1.3em;
+    background-color: #f1f1f1; /* Cor do CTA */
+    color: #000000;
+}
+/* --- Seção de Dores (Pain Points) --- */
+.pain-points-section {
+    background-color: #f1f1f1; /* Cor de fundo (Secundária) */
+    padding: 80px 20px;
+    text-align: center;
+}
+.pain-points-section h2 {
+    font-size: 2.8em;
+    color: #458f8e; /* Cor do título (Principal) */
+    margin-bottom: 20px;
+}
+.pain-points-section .section-description {
+    font-size: 1.1em;
+    color: #000000; /* Preto para legibilidade */
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+}
+.pain-points-prompt {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #458f8e; /* Principal */
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.pain-points-list-container {
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    text-align: left; /* Alinha o texto da lista à esquerda */
+}
+.pain-points-list-container ul {
+    list-style: none; /* Remove marcadores padrão */
+    padding: 0;
+    margin: 0;
+}
+.pain-points-list-container ul li {
+    font-size: 1.1em;
+    color: #000000; /* Preto para legibilidade */
+    margin-bottom: 15px;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 30px; /* Espaço para o ícone */
+}
+.pain-points-list-container ul li:before {
+    content: "•"; /* Marcador de lista personalizado */
+    color: #458f8e; /* Principal */
+    font-size: 1.5em;
+    position: absolute;
+    left: 0;
+    top: -5px;
+    font-weight: bold;
+}
+.pain-points-conclusion {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #458f8e; /* Principal */
+    max-width: 800px;
+    margin: 0 auto;
+}
+/* --- Seção: Onde Estratégia, Criatividade e Performance se Encontram. --- */
+.pillars-intro-section {
+    background-color: #458f8e; /* Cor de fundo (Principal) */
+    padding: 80px 20px;
+    text-align: center;
+    color: #f1f1f1; /* Texto secundário/claro */
+}
+.pillars-intro-section h2 {
+    font-size: 2.8em;
+    color: #f1f1f1; /* Cor do título (Secundária) */
+    margin-bottom: 20px;
+}
+.pillars-intro-section .section-description {
+    font-size: 1.1em;
+    color: #f1f1f1; /* Cor do texto (Secundária) */
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+}
+.pillars-call-to-action {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #f1f1f1; /* CTA */
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.solutions-title {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #f1f1f1; /* CTA */
+    margin-top: 50px; /* Mais espaço antes do título "soluções" */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+/* --- Seções de Pilares --- */
+.pillar-section {
+    padding: 80px 20px;
+    background-color: #f1f1f1; /* Fundo claro (Secundária) */
+}
+
+.pillar-section .container {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Espaço entre texto e imagem */
+}
+
+/* Alinhamento de conteúdo: texto à esquerda, imagem à direita */
+.pillar-content-left {
+    flex-direction: row;
+}
+
+/* Alinhamento de conteúdo: imagem à esquerda, texto à direita (para alternar pilares) */
+.pillar-content-right {
+    flex-direction: row-reverse; /* Inverte a ordem para imagem na esquerda */
+}
+
+.pillar-text {
+    flex: 1; /* Ocupa o espaço disponível */
+    max-width: 600px;
+}
+
+.pillar-text h2 {
+    font-size: 2.5em;
+    color: #458f8e; /* Cor do título (Principal) */
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.pillar-text p {
+    font-size: 1em;
+    color: #000000; /* Preto para legibilidade */
+    line-height: 1.6;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.pillar-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pillar-text ul li {
+    font-size: 1em;
+    color: #000000; /* Preto para legibilidade */
+    margin-bottom: 10px;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 25px; /* Espaço para o ícone */
+}
+
+.pillar-text ul li:before {
+    content: "•"; /* Marcador de lista personalizado */
+    color: #458f8e; /* Principal */
+    font-size: 1.5em;
+    position: absolute;
+    left: 0;
+    top: -5px;
+    font-weight: bold;
+}
+
+.pillar-image {
+    flex: 1; /* Ocupa o espaço restante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pillar-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Estilos do Rodapé */
+footer {
+    background-color: #f1f1f1; /* Principal */
+    color: #000000; /* Secundária */
+    padding: 30px 0;
+    font-size: 0.9em;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+/* 2025 Todos os direitos reservados */
+.footer-left p {
+    margin: 0;
+    color: #000000; /* Secundária */
+}
+
+.footer-left a,
+.footer-right a {
+    color: #000000; /* Secundária */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-left a:hover,
+.footer-right a:hover {
+    color: #458f8e; /* Tom de hover da Principal */
+    text-decoration: none;
+}
+/* Política Privacidade - Termos de Serviço */
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.footer-info,
+.footer-social {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.footer-link-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: #f1f1f1; /* Secundária */
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+.footer-social .footer-link-icon .fab {
+color: #000000; /* Corrigido: Usar cor Secundária para contraste com o fundo escuro */
+}
+
+.footer-social .footer-link-icon.social-icon:hover .fa-instagram {
+    color: #dd2a7b; /* Tom de hover da Principal */
+}
+.footer-social .footer-link-icon.social-icon:hover .fa-linkedin {
+    color: #0e76a8; /* Tom de hover da Principal */
+}
+
+
+/* --- Responsividade Geral --- */
+@media (max-width: 992px) { /* Tablet Landscape */
+    .hero h1 {
+        font-size: 3.5em;
+    }
+    .hero h2 {
+        font-size: 2em;
+    }
+    .hero-subheadline {
+        font-size: 1.2em;
+    }
+    .main-nav ul {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) { /* Tablet Portrait e Mobile */
+    .header-container {
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 10px;
+    }
+    .main-nav {
+        order: 2; /* Move o menu para o meio no mobile */
+        width: 100%; /* Ocupa a largura total */
+        justify-content: center; /* Centraliza o menu */
+    }
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .header-left {
+        order: 1; /* Logo no topo */
+        width: 100%;
+        text-align: center;
+    }
+    .header-cta {
+        order: 3; /* Botão no final */
+        margin-left: 0; /* Limpa margem */
+        width: 100%;
+        max-width: 280px; /* Limita largura do botão */
+    }
+    .logo-img {
+        max-width: 80px; /* Logo menor no mobile */
+    }
+
+    .hero {
+        padding: 80px 20px;
+        min-height: 450px;
+    }
+    .hero h1 {
+        font-size: 3em;
+    }
+    .hero h2 {
+        font-size: 1.8em;
+    }
+    .hero-subheadline {
+        font-size: 1.1em;
+    }
+    .main-cta {
+        padding: 15px 30px;
+        font-size: 1.1em;
+    }
+    /* --- Responsividade para a Seção de Dores --- */
+    .pain-points-section h2 {
+        font-size: 2.2em;
+    }
+    .pain-points-section .section-description,
+    .pain-points-prompt,
+    .pain-points-conclusion {
+        font-size: 1em;
+        padding: 0 10px; /* Adiciona padding lateral em mobile */
+    }
+    .pain-points-list-container {
+        max-width: 90%; /* Ajusta largura em mobile */
+    }
+    .pain-points-list-container ul li {
+        font-size: 0.95em;
+        padding-left: 25px;
+    }
+    /* --- Responsividade para a Seção Pillars Intro --- */
+    .pillars-intro-section h2 {
+        font-size: 2.2em;
+    }
+    .pillars-intro-section .section-description {
+        font-size: 1em;
+        padding: 0 10px;
+    }
+    .pillars-call-to-action {
+        font-size: 1.2em;
+    }
+    .solutions-title {
+        font-size: 2em;
+    }
+    /* --- Responsividade para Seções de Pilares --- */
+    .pillar-section .container {
+        flex-direction: column; /* Empilha texto e imagem no mobile */
+        text-align: center;
+    }
+    .pillar-content-right { /* Remove row-reverse para empilhar normalmente */
+        flex-direction: column;
+    }
+    .pillar-text {
+        max-width: 100%; /* Ocupa largura total */
+        order: 2; /* Texto abaixo da imagem */
+    }
+    .pillar-text h2,
+    .pillar-text p,
+    .pillar-text ul {
+        text-align: center; /* Centraliza texto em mobile */
+        padding: 0 10px; /* Adiciona padding lateral para texto */
+    }
+    .pillar-image {
+        order: 1; /* Imagem acima do texto */
+        margin-bottom: 30px; /* Espaço entre imagem e texto */
+    }
+    .pillar-text ul li {
+        text-align: left; /* Mantém lista alinhada à esquerda mesmo com o h2/p centralizados */
+        padding-left: 25px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 90%; /* Ajusta largura da lista em mobile */
+    }
+    .pillar-section .container {
+        flex-direction: column; /* Empilha texto e imagem no mobile */
+        text-align: center;
+    }
+    .pillar-content-left { /* No mobile, tanto left quanto right devem empilhar */
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 480px) { /* Mobile Pequeno */
+    .hero h1 {
+        font-size: 2.5em;
+    }
+    .hero h2 {
+        font-size: 1.5em;
+    }
+    .hero-subheadline {
+        font-size: 0.9em;
+    }
+    .main-cta {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}
