@@ -465,7 +465,9 @@ header {
     color: var(--primary-color); /* Destaque ao hover */
     text-decoration: underline;
 }
-
+.social-links a:hover .fa-instagram {
+    color: #C13584 /* Cor Instagram */
+}
 /* Coluna "Conecte-se" */
 .social-icons-footer {
     display: flex;
