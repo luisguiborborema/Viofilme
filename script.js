@@ -73,9 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof ScrollReveal !== 'undefined') {
         ScrollReveal({
             distance: '80px',
-            duration: 1500,
+            duration: 1150, // --- Estava 1500 ---
             easing: 'ease-in-out',
-            delay: 200,
+            delay: 150, // --- Estava 200 ---
             reset: false
         });
 
