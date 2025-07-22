@@ -336,82 +336,182 @@ header {
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
-/* Estilos do Rodapé */
-footer {
-    background-color: #f1f1f1; /* Principal */
-    color: #000000; /* Secundária */
-    padding: 30px 0;
-    font-size: 0.9em;
+/* Rodapé */
+.main-footer {
+    background-color: var(--dark-bg-primary);
+    color: var(--text-color-light);
+    padding: 60px 20px 30px; /* Mais padding superior para o conteúdo */
+    text-align: center;
+    font-size: 0.9rem;
 }
 
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+.footer-content {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-/* 2025 Todos os direitos reservados */
-.footer-left p {
-    margin: 0;
-    color: #000000; /* Secundária */
+    align-items: flex-start; /* Alinha o topo das colunas */
+    max-width: 1200px;
+    margin: 0 auto 40px; /* Centraliza o conteúdo e adiciona margem antes do bottom */
+    flex-wrap: wrap; /* Para quebrar linha em telas pequenas */
+    gap: 40px; /* Espaço entre as colunas em mobile */
 }
 
-.footer-left a,
-.footer-right a {
-    color: #000000; /* Secundária */
-    text-decoration: none;
+.footer-column {
+    flex: 1; /* Permite que as colunas cresçam */
+    min-width: 250px; /* Largura mínima para evitar quebras muito cedo */
+    padding: 0 10px;
+    text-align: left; /* Alinha o texto das colunas à esquerda */
+}
+
+.footer-column h4 {
+    font-size: 1.3rem;
+    color: var(--heading-color); /* Títulos das colunas claros */
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 15px; /* Para a linha decorativa */
+}
+.footer-column h4::before { /* Linha decorativa ACIMA do título */
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0; /* Alinha no topo do h4 */
+    width: 40px; /* Largura da linha */
+    height: 2px; /* Espessura da linha */
+    background-color: var(--primary-color); /* Usa sua cor de destaque */
+    border-radius: 1px;
+}
+/* REMOVIDO .footer-column h4::after para manter apenas a linha superior */
+
+.footer-email {
+    font-size: 0.95rem;
+    color: var(--text-color-muted); /* Cor padrão do email (texto ao redor do link) */
+    margin-top: 10px;
+}
+
+.footer-email a { /* Estilo do link de email */
+    color: var(--text-color-muted); /* Cor padrão do link de email */
+    text-decoration: none; /* Remove o sublinhado padrão do link */
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Transição suave */
+}
+
+.footer-email a:hover { /* Estilo do link de email no hover */
+    color: var(--primary-color); /* Muda para a cor de destaque (ciano/turquesa) */
+    text-decoration: underline; /* Adiciona sublinhado no hover */
+}
+/* Nova linha separadora que ocupa toda a tela */
+.footer-full-width-divider {
+    height: 1px; /* Espessura da linha */
+    background-color: rgba(255, 255, 255, 0.1); /* Cor da linha, um pouco mais clara */
+    margin-top: 40px; /* Espaço acima da linha */
+    margin-bottom: 40px; /* Espaço abaixo da linha */
+
+    /* Truque para ocupar 100% da largura da viewport, ignorando o padding do pai */
+    width: 100vw; /* 100% da largura da viewport (tela visível) */
+    position: relative; /* Essencial para o left/transform */
+    left: 50%; /* Move o centro do elemento para o centro da tela */
+    transform: translateX(-50%); /* Puxa o elemento de volta em metade da sua própria largura */
+}
+/* Coluna "Sobre" (seu logo e descrição) */
+.footer-about .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color-light);
+    margin-bottom: 20px;
+    position: relative;
+    padding-top: 15px;
+}
+.footer-about .footer-logo::before { /* Linha decorativa ACIMA do logo */
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--primary-color);
+    border-radius: 1px;
+}
+.footer-about .footer-logo .footer-logo-icon {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+.footer-about p {
+    font-size: 0.9rem;
+    color: var(--text-color-muted);
+    line-height: 1.5;
+    margin-bottom: 0;
+    max-width: none;
+}
+
+/* Coluna "Links Rápidos" */
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+.footer-links ul li:last-child {
+    margin-bottom: 0;
+}
+.footer-links ul li a {
+    color: var(--text-color-muted); /* Links mais suaves */
+    font-size: 0.95rem;
     transition: color 0.3s ease;
 }
-
-.footer-left a:hover,
-.footer-right a:hover {
-    color: #458f8e; /* Tom de hover da Principal */
-    text-decoration: none;
+.footer-links ul li a:hover {
+    color: var(--primary-color); /* Destaque ao hover */
+    text-decoration: underline;
 }
-/* Política Privacidade - Termos de Serviço */
-.footer-right {
+
+/* Coluna "Conecte-se" */
+.social-icons-footer {
     display: flex;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-decoration: none;
+    gap: 20px; /* Espaço entre os ícones */
+    margin-bottom: 20px;
+}
+.social-icons-footer a {
+    font-size: 1.8rem; /* Tamanho dos ícones sociais */
+    color: var(--text-color-muted); /* Cor padrão mais suave */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-icons-footer a:hover {
+    transform: translateY(-3px); /* Efeito de levantar */
+}
+/* Cores específicas no hover para os ícones sociais do rodapé */
+.social-icons-footer a:hover .fab.fa-github {
+    color: #fff; /* Branco para GitHub */
+}
+.social-icons-footer a:hover .fab.fa-linkedin-in {
+    color: #0077b5; /* Azul LinkedIn */
+}
+.social-icons-footer a:hover .fas.fa-envelope {
+    color: var(--primary-color); /* Sua primary-color para Email */
 }
 
-.footer-info,
-.footer-social {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-decoration: none;
+.footer-email {
+    font-size: 0.95rem;
+    color: var(--text-color-muted);
+    margin-top: 10px; /* Espaço após os ícones sociais */
 }
 
-.footer-link-icon {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 500;
-    color: #f1f1f1; /* Secundária */
-    transition: color 0.3s ease;
-    text-decoration: none;
+/* Parte Inferior do Rodapé (Copyright) */
+.footer-bottom {
+    margin-top: 5px; /* Espaço entre o conteúdo e a parte de copyright */
+    padding-top: 5px; /* Padding acima da linha divisória */
+    text-align: center;
 }
-.footer-social .footer-link-icon .fab {
-color: #000000; /* Corrigido: Usar cor Secundária para contraste com o fundo escuro */
+.footer-divider{
+    border: rgba(255, 255, 255, 0.1); /* Cor da linha divisória */
 }
-
-.footer-social .footer-link-icon.social-icon:hover .fa-instagram {
-    color: #dd2a7b; /* Tom de hover da Principal */
+.footer-bottom p {
+    font-size: 0.85rem;
+    color: var(--text-color-muted);
+    margin-top: 5px; /* Espaço abaixo da linha */
+    max-width: none;
 }
-.footer-social .footer-link-icon.social-icon:hover .fa-linkedin {
-    color: #0e76a8; /* Tom de hover da Principal */
-}
-
 
 /* --- Responsividade Geral --- */
 @media (max-width: 992px) { /* Tablet Landscape */
