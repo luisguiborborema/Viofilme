@@ -336,6 +336,91 @@ header {
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
+/* --- Seção de Perguntas Frequentes (FAQ) --- */
+.faq-section {
+    padding: 80px 20px;
+    background-color: #f1f1f1; /* Fundo claro (Secundária) */
+    text-align: center;
+}
+
+.faq-section h2 {
+    margin-bottom: 15px;
+    color: #458f8e; /* Principal */
+}
+
+.faq-section .section-description {
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    color: #000000; /* Preto para legibilidade */
+    line-height: 1.6;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-item {
+    background-color: #ffffff; /* Fundo branco para cada item */
+    border: 1px solid #e0e0e0; /* Borda suave */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    background-color: #f1f1f1; /* Fundo da pergunta (Secundária) */
+    border-bottom: 1px solid #e0e0e0; /* Borda entre pergunta e resposta */
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #e0e0e0; /* Fundo suave no hover */
+}
+
+.faq-question h3 {
+    margin: 0;
+    font-size: 1.15em;
+    color: #000000; /* Preto */
+}
+
+.faq-toggle-icon {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #458f8e; /* Principal */
+    transition: transform 0.3s ease;
+}
+
+/* Rotação do ícone quando a FAQ está ativa */
+.faq-item.active .faq-toggle-icon {
+    transform: rotate(45deg); /* Gira o '+' para 'x' */
+}
+
+.faq-answer {
+    max-height: 0; /* Essencial para o efeito de esconder */
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out; /* Transição para altura e padding */
+    padding: 0 20px; /* Padding inicial zero */
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px; /* Altura máxima suficiente para a maioria das respostas. Ajuste se necessário! */
+    padding: 20px; /* Padding quando ativo */
+}
+
+.faq-answer p {
+    margin: 0;
+    color: #555555; /* Cinza para o texto da resposta */
+    line-height: 1.6;
+}
+
 /* Rodapé */
 .main-footer {
     background-color: var(--dark-bg-primary);
