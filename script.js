@@ -68,14 +68,13 @@ document.addEventListener('DOMContentLoaded', function() {
         type();
     }
 
-
     // --- Código do ScrollReveal.js ---
     if (typeof ScrollReveal !== 'undefined') {
         ScrollReveal({
             distance: '80px',
-            duration: 1150, // --- Estava 1500 ---
+            duration: 1200,
             easing: 'ease-in-out',
-            delay: 150, // --- Estava 200 ---
+            delay: 150,
             reset: false
         });
 
@@ -97,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ScrollReveal().reveal('.pillar-section .pillar-text', { origin: 'left', delay: 100 });
         ScrollReveal().reveal('.pillar-section .pillar-image', { origin: 'right', delay: 300 });
     }
-    // --- Funcionalidade do Acordeão (FAQ) ---
+// --- Funcionalidade do Acordeão (FAQ) ---
     const faqQuestions = document.querySelectorAll('.faq-question');
 
     faqQuestions.forEach(question => {
@@ -129,4 +128,105 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+/* 
+     // --- Código do Chatbot ---
+    const chatbotToggleButton = document.getElementById('chatbot-toggle-button');
+    const chatbotWidget = document.getElementById('chatbot-widget');
+    const chatbotCloseButton = document.getElementById('chatbot-close-button');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+    const chatSendButton = document.getElementById('chat-send-button');
+
+    // ** IMPORTANTE: Substitua esta URL pela URL do seu Custom Webhook do Make **
+    const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/jwvgtcckq9x778nsciyjxq5reu5m2dxo'; 
+
+    chatbotToggleButton.addEventListener('click', () => {
+        chatbotWidget.classList.toggle('open');
+        if (chatbotWidget.classList.contains('open')) {
+            chatInput.focus(); // Foca no input quando o chat abre
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Rola para o final
+        }
+    });
+
+    chatbotCloseButton.addEventListener('click', () => {
+        chatbotWidget.classList.remove('open');
+    });
+
+    // Função para adicionar mensagem ao chat
+    function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', `${sender}-message`);
+        messageDiv.textContent = text;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Rola para a última mensagem
+    }
+
+    // Função para enviar mensagem para o Make
+    async function sendMessageToMake(message) {
+        // Adiciona a mensagem do usuário imediatamente
+        addMessage(message, 'user');
+        chatInput.value = ''; // Limpa o input
+
+        // Adiciona uma mensagem de "digitando..." do bot
+        const typingIndicator = document.createElement('div');
+        typingIndicator.classList.add('message', 'bot-message');
+        typingIndicator.textContent = 'Digitando...';
+        typingIndicator.id = 'typing-indicator';
+        chatMessages.appendChild(typingIndicator);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        try {
+            const response = await fetch(MAKE_WEBHOOK_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: message })
+            });
+
+            // Remove o indicador de digitando
+            if (document.getElementById('typing-indicator')) {
+                document.getElementById('typing-indicator').remove();
+            }
+
+            if (!response.ok) {
+                throw new Error(`Erro HTTP! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            // Espera que o Make retorne um JSON como: {"response": "Sua mensagem aqui"}
+            if (data.response) {
+                addMessage(data.response, 'bot');
+            } else {
+                addMessage("Ocorreu um erro ao processar sua mensagem. Tente novamente.", 'bot');
+            }
+
+        } catch (error) {
+            console.error('Erro ao enviar mensagem para o Make:', error);
+            // Remove o indicador de digitando em caso de erro
+            if (document.getElementById('typing-indicator')) {
+                document.getElementById('typing-indicator').remove();
+            }
+            addMessage("Desculpe, não consegui me conectar no momento. Por favor, tente mais tarde.", 'bot');
+        }
+    }
+
+    // Evento de clique no botão de enviar
+    chatSendButton.addEventListener('click', () => {
+        const message = chatInput.value.trim();
+        if (message) {
+            sendMessageToMake(message);
+        }
+    });
+
+    // Evento de "Enter" no campo de input
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const message = chatInput.value.trim();
+            if (message) {
+                sendMessageToMake(message);
+            }
+        }
+    });
+*/
 });
