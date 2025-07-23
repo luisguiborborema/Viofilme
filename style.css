@@ -464,8 +464,15 @@ header {
     background-color: var(--primary-color); /* Usa sua cor de destaque */
     border-radius: 1px;
 }
-/* REMOVIDO .footer-column h4::after para manter apenas a linha superior */
+.footer-phone a {
+    color: var(--text-color-muted); /* Cor normal do texto, use uma variável ou um código de cor como #b0b0b0 */
+    text-decoration: none; /* Remove o sublinhado */
+    transition: color 0.3s ease; /* Transição suave para a cor */
+}
 
+.footer-phone a:hover {
+    color: #25d366; /* Cor desejada no hover --> cor do WhatsApp */
+}
 .footer-email {
     font-size: 0.95rem;
     color: var(--text-color-muted); /* Cor padrão do email (texto ao redor do link) */
@@ -479,8 +486,7 @@ header {
 }
 
 .footer-email a:hover { /* Estilo do link de email no hover */
-    color: var(--primary-color); /* Muda para a cor de destaque (ciano/turquesa) */
-    text-decoration: underline; /* Adiciona sublinhado no hover */
+    color: #458f8e; /* Muda para a cor de destaque (ciano/turquesa) */
 }
 /* Nova linha separadora que ocupa toda a tela */
 .footer-full-width-divider {
@@ -495,6 +501,13 @@ header {
     left: 50%; /* Move o centro do elemento para o centro da tela */
     transform: translateX(-50%); /* Puxa o elemento de volta em metade da sua própria largura */
 }
+.footer-logo-img {
+    max-width: 100px; /* Ajuste o tamanho máximo da sua logo no rodapé */
+    height: auto;
+    display: block; /* Garante que a imagem se comporte como um bloco */
+    margin-bottom: 10px; /* Espaço entre o logo e o texto da descrição, se houver */
+    margin-left: -5px; /* Ajuste para alinhar melhor se necessário */
+}
 /* Coluna "Sobre" (seu logo e descrição) */
 .footer-about .footer-logo {
     display: flex;
@@ -505,7 +518,7 @@ header {
     color: var(--text-color-light);
     margin-bottom: 20px;
     position: relative;
-    padding-top: 15px;
+    padding-top: 0;
 }
 .footer-about .footer-logo::before { /* Linha decorativa ACIMA do logo */
     content: '';
@@ -516,6 +529,7 @@ header {
     height: 2px;
     background-color: var(--primary-color);
     border-radius: 1px;
+    display: none; /* Esconde por padrão */
 }
 .footer-about .footer-logo .footer-logo-icon {
     color: var(--primary-color);
@@ -545,13 +559,11 @@ header {
     color: var(--text-color-muted); /* Links mais suaves */
     font-size: 0.95rem;
     transition: color 0.3s ease;
+    text-decoration: none; /* Remove o sublinhado */
 }
 .footer-links ul li a:hover {
-    color: var(--primary-color); /* Destaque ao hover */
-    text-decoration: underline;
-}
-.social-links a:hover .fa-instagram {
-    color: #C13584 /* Cor Instagram */
+    color: #458f8e; /* Destaque ao hover */
+    text-decoration: none; /* Remove o sublinhado no hover */
 }
 /* Coluna "Conecte-se" */
 .social-icons-footer {
@@ -568,14 +580,14 @@ header {
     transform: translateY(-3px); /* Efeito de levantar */
 }
 /* Cores específicas no hover para os ícones sociais do rodapé */
-.social-icons-footer a:hover .fab.fa-github {
-    color: #fff; /* Branco para GitHub */
+.social-icons-footer a:hover .fab.fa-instagram {
+    color: #E1306C; /* Cor do Instagram */
 }
 .social-icons-footer a:hover .fab.fa-linkedin-in {
     color: #0077b5; /* Azul LinkedIn */
 }
 .social-icons-footer a:hover .fas.fa-envelope {
-    color: var(--primary-color); /* Sua primary-color para Email */
+    color: #458f8e; /* Sua primary-color para Email */
 }
 
 .footer-email {
@@ -598,6 +610,15 @@ header {
     color: var(--text-color-muted);
     margin-top: 5px; /* Espaço abaixo da linha */
     max-width: none;
+}
+.footer-bottom p a {
+    color: var(--text-color-muted); /* Cor normal do texto, use a variável ou um código de cor como #b0b0b0 */
+    text-decoration: none; /* Remove o sublinhado */
+    transition: color 0.3s ease; /* Transição suave para a cor */
+}
+
+.footer-bottom p a:hover {
+    color: #458f8e; /* Cor desejada no hover */
 }
 
 /* --- Responsividade Geral --- */
