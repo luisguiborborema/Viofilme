@@ -97,4 +97,36 @@ document.addEventListener('DOMContentLoaded', function() {
         ScrollReveal().reveal('.pillar-section .pillar-text', { origin: 'left', delay: 100 });
         ScrollReveal().reveal('.pillar-section .pillar-image', { origin: 'right', delay: 300 });
     }
+    // --- Funcionalidade do Acordeão (FAQ) ---
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const faqItem = question.closest('.faq-item'); // Encontra o pai .faq-item
+            const faqAnswer = faqItem.querySelector('.faq-answer');
+
+            // Verifica se este item já está ativo
+            const isActive = faqItem.classList.contains('active');
+
+            // Fecha todas as outras FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-answer').style.maxHeight = '0';
+                    item.querySelector('.faq-question .faq-toggle-icon').style.transform = 'rotate(0deg)'; // Reseta ícone
+                }
+            });
+
+            // Abre/Fecha a FAQ clicada
+            faqItem.classList.toggle('active');
+            if (faqItem.classList.contains('active')) {
+                // Define max-height para a scrollHeight do conteúdo para transição suave
+                faqAnswer.style.maxHeight = faqAnswer.scrollHeight + 'px';
+                question.querySelector('.faq-toggle-icon').style.transform = 'rotate(45deg)'; // Gira o ícone
+            } else {
+                faqAnswer.style.maxHeight = '0';
+                question.querySelector('.faq-toggle-icon').style.transform = 'rotate(0deg)'; // Reseta ícone
+            }
+        });
+    });
 });
