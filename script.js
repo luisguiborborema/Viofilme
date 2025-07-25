@@ -37,6 +37,15 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove('scrolled');
         }
     }
+
+    // Adicione um ouvinte de evento de rolagem
+    window.addEventListener('scroll', handleHeaderShrink);
+    // Execute a função uma vez no carregamento para caso a página já carregue scrollada
+    handleHeaderShrink();
+
+
+    // --- Código do Efeito de Digitação (Typing Effect) ---
+    // REMOVIDO: O efeito de digitação não será mais usado, o H2 é estático.
     
     const typingElement = document.querySelector('.typing-effect');
     if (typingElement) {
