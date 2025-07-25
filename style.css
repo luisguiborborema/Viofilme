@@ -727,19 +727,7 @@ header {
 .footer-email a:hover { /* Estilo do link de email no hover */
     color: #458f8e; /* Muda para a cor de destaque (ciano/turquesa) */
 }
-/* Nova linha separadora que ocupa toda a tela */
-.footer-full-width-divider {
-    height: 1px; /* Espessura da linha */
-    background-color: rgba(255, 255, 255, 0.1); /* Cor da linha, um pouco mais clara */
-    margin-top: 40px; /* Espaço acima da linha */
-    margin-bottom: 40px; /* Espaço abaixo da linha */
 
-    /* Truque para ocupar 100% da largura da viewport, ignorando o padding do pai */
-    width: 100vw; /* 100% da largura da viewport (tela visível) */
-    position: relative; /* Essencial para o left/transform */
-    left: 50%; /* Move o centro do elemento para o centro da tela */
-    transform: translateX(-50%); /* Puxa o elemento de volta em metade da sua própria largura */
-}
 .footer-logo-img {
     max-width: 100px; /* Ajuste o tamanho máximo da sua logo no rodapé */
     height: auto;
