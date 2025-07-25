@@ -27,9 +27,16 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', activateNavLinkOnScroll);
     activateNavLinkOnScroll(); // Executa uma vez ao carregar a página
 
+       // --- Reduzir Header ao Scroll ---
+    const scrollThreshold = 100; // Distância em pixels para começar a diminuir o header
 
-    // --- Código do Efeito de Digitação (Typing Effect) ---
-    // REMOVIDO: O efeito de digitação não será mais usado, o H2 é estático.
+    function handleHeaderShrink() {
+        if (window.scrollY > scrollThreshold) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
     
     const typingElement = document.querySelector('.typing-effect');
     if (typingElement) {
