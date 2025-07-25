@@ -403,20 +403,22 @@ header.scrolled .cta-button.header-cta {
 
 .carousel-item {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
     background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 400px; /* Tamanho do item do carrossel */
+    max-width: 800px; /* Tamanho do item do carrossel */
+    width: auto;
+    gap: 20px;
 }
 
 .before-image, .after-image {
-    width: 100%;
+    width: calc(50% - 10px);
     text-align: center;
     padding: 10px;
+    box-sizing: border-box;
 }
 
 .before-image img, .after-image img {
@@ -1035,7 +1037,12 @@ header.scrolled .cta-button.header-cta {
         align-items: center;
     }
     .carousel-item {
-        max-width: 90%;
+        flex-direction: column;
+        max-width: 100%;
+        gap: 0;
+    }
+    .before-image, .after-image{
+        width: 100%;
     }
     .footer-content {
         flex-direction: column;
