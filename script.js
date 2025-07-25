@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Código do Efeito de Digitação (Typing Effect) ---
     // REMOVIDO: O efeito de digitação não será mais usado, o H2 é estático.
-    /*
+    
     const typingElement = document.querySelector('.typing-effect');
     if (typingElement) {
         const textToType = [
@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         type();
     }
-    */
 
     // --- Código do ScrollReveal.js ---
     if (typeof ScrollReveal !== 'undefined') {
