@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Marcar Link da Navbar Ativo (Scrollspy) ---
     const navLinks = document.querySelectorAll('.main-nav ul li a');
+    // Adicionado o ID 'home' para a seção hero para o scrollspy funcionar corretamente
     const sections = document.querySelectorAll('section[id]');
     const header = document.querySelector('header');
 
@@ -28,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // --- Código do Efeito de Digitação (Typing Effect) ---
+    // REMOVIDO: O efeito de digitação não será mais usado, o H2 é estático.
+    /*
     const typingElement = document.querySelector('.typing-effect');
     if (typingElement) {
         const textToType = [
@@ -67,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         type();
     }
+    */
 
     // --- Código do ScrollReveal.js ---
     if (typeof ScrollReveal !== 'undefined') {
@@ -95,6 +99,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
         ScrollReveal().reveal('.pillar-section .pillar-text', { origin: 'left', delay: 100 });
         ScrollReveal().reveal('.pillar-section .pillar-image', { origin: 'right', delay: 300 });
+
+        // Novas seções: Filosofia (Diferencial), Processo, Cases e CTA Final
+        ScrollReveal().reveal('.philosophy-section h2', { origin: 'top' });
+        ScrollReveal().reveal('.philosophy-section .section-description', { origin: 'top', delay: 100 });
+        ScrollReveal().reveal('.media-day-highlight', { origin: 'bottom', delay: 200 });
+        ScrollReveal().reveal('.before-after-carousel .carousel-item', { origin: 'bottom', interval: 150, delay: 300 });
+
+        ScrollReveal().reveal('.process-section h2', { origin: 'top' });
+        ScrollReveal().reveal('.process-section .section-description', { origin: 'top', delay: 100 });
+        ScrollReveal().reveal('.process-step', { origin: 'bottom', interval: 100, delay: 200 });
+
+        ScrollReveal().reveal('.cases-section h2', { origin: 'top' });
+        ScrollReveal().reveal('.case-item', { origin: 'bottom', interval: 150, delay: 100 });
+
+        ScrollReveal().reveal('.cta-final-section h2', { origin: 'top' });
+        ScrollReveal().reveal('.cta-final-section .section-description', { origin: 'top', delay: 100 });
+        ScrollReveal().reveal('.cta-final-section .main-cta', { origin: 'bottom', delay: 200 });
+        ScrollReveal().reveal('.cta-final-section .cta-objection', { origin: 'bottom', delay: 300 });
     }
 // --- Funcionalidade do Acordeão (FAQ) ---
     const faqQuestions = document.querySelectorAll('.faq-question');
@@ -128,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-/* 
+/*
      // --- Código do Chatbot ---
     const chatbotToggleButton = document.getElementById('chatbot-toggle-button');
     const chatbotWidget = document.getElementById('chatbot-widget');
@@ -138,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatSendButton = document.getElementById('chat-send-button');
 
     // ** IMPORTANTE: Substitua esta URL pela URL do seu Custom Webhook do Make **
-    const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/jwvgtcckq9x778nsciyjxq5reu5m2dxo'; 
+    const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/jwvgtcckq9x778nsciyjxq5reu5m2dxo';
 
     chatbotToggleButton.addEventListener('click', () => {
         chatbotWidget.classList.toggle('open');
