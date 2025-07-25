@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-
+    /// --- ---
     // --- Marcar Link da Navbar Ativo (Scrollspy) ---
     const navLinks = document.querySelectorAll('.main-nav ul li a');
     // Adicionado o ID 'home' para a seção hero para o scrollspy funcionar corretamente
