@@ -30,13 +30,25 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-
+header.scrolled {
+    padding: 5px 0; /* Padding menor */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra mais pronunciada */
+}
+header.scrolled .logo-img {
+    max-width: 60px; /* Logo menor quando scrollado */
+}
+header.scrolled .main-nav ul li a {
+    font-size: 0.85em; /* Texto do menu menor */
+}
+header.scrolled .cta-button.header-cta {
+    padding: 5px 15px; /* Botão menor */
+    font-size: 0.8em;
+}
 .logo-img { /* Ajustei para apenas .logo-img se a imagem não estiver dentro de header .logo-img */
     max-width: 100px; /* Tamanho da logo no header */
     height: auto;
     display: block;
 }
-
 /* Navegação Principal */
 .main-nav {
     flex-grow: 1; /* Ocupa o espaço central */
