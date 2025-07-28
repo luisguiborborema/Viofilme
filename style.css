@@ -506,7 +506,7 @@ header.scrolled .cta-button.header-cta {
 .cases-section {
     background-color: #458f8e; /* Cor principal */
     padding: 80px 20px;
-    text-align: center;
+    text-align: left; /* ALTERADO DE 'center' PARA 'left' */
     color: #f1f1f1;
 }
 
@@ -521,8 +521,28 @@ header.scrolled .cta-button.header-cta {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 0;
 }
+/* Layout flexível para a seção de cases */
+.cases-container {
+    display: flex;
+    align-items: center; /* Alinha verticalmente o título e os cards */
+    gap: 60px; /* Espaço entre o título e os cards */
+}
+
+.cases-header {
+    flex: 1; /* Define que a coluna do título é flexível */
+    min-width: 280px; /* Largura mínima para o título */
+}
+
+.cases-header h2 {
+   margin-bottom: 0; /* Remove a margem que não é mais necessária */
+}
+
+.cases-grid {
+    flex: 2; /* Faz a grade de cards ocupar o dobro do espaço do título */
+}
+
 
 .case-item {
     background-color: #ffffff;
@@ -902,6 +922,15 @@ header.scrolled .cta-button.header-cta {
     .carousel-item {
         max-width: 350px;
     }
+    cases-container {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        text-align: center; /* Centraliza o texto novamente em telas menores */
+    }
+
+    .cases-section h2 {
+        margin-bottom: 50px; /* Adiciona a margem de volta para espaçamento */
+    }
+
 }
 
 @media (max-width: 768px) { /* Tablet Portrait e Mobile */
