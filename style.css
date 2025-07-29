@@ -111,7 +111,7 @@ header.scrolled .cta-button.header-cta {
 /* --- Seção Hero --- */
 .hero {
      /* Imagem de fundo */
-    background-image: url('logo_sem_fundo.png'); /* SUBSTITUA PELO NOME E CAMINHO DA SUA IMAGEM */
+    background-image: url('Imagens/logo_sem_fundo.png'); /* SUBSTITUA PELO NOME E CAMINHO DA SUA IMAGEM */
     background-size: cover; /* Faz a imagem cobrir toda a área, cortando se necessário */
     background-position: center center; /* Centraliza a imagem */
     background-repeat: no-repeat; /* Evita que a imagem se repita */
@@ -510,13 +510,38 @@ header.scrolled .cta-button.header-cta {
     color: #f1f1f1;
     margin-bottom: 50px;
 }
+/* Novo container para o layout Flexbox */
+.cases-section .cases-layout-container {
+    max-width: 1200px; /* Mantém o max-width para o conteúdo */
+    margin: 0 auto; /* Centraliza o container */
+    display: flex; /* Habilita Flexbox */
+    align-items: flex-start; /* Alinha o topo dos itens */
+    gap: 50px; /* Espaço entre o texto e os cards */
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+    justify-content: space-between; /* Espaça o conteúdo e os cards */
+}
+
+/* Estilos para o conteúdo de introdução (título/descrição) */
+.cases-section .cases-intro-content {
+    flex: 1; /* Permite que ele ocupe espaço */
+    min-width: 300px; /* Largura mínima para o texto */
+    max-width: 400px; /* Largura máxima para o texto */
+    text-align: left; /* Alinha o texto à esquerda */
+    padding-top: 15px; /* Alinha verticalmente com o topo dos cards */
+}
+
+.cases-section .cases-intro-content h2 {
+    font-size: 2.8em;
+    color: #f1f1f1;
+    margin-bottom: 20px; /* Reduzi um pouco a margem inferior */
+}
 
 .cases-grid {
+    flex: 2; /* Permite que os cards ocupem mais espaço */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 700px;
 }
 
 .case-item {
@@ -524,7 +549,7 @@ header.scrolled .cta-button.header-cta {
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    text-align: left;
+    text-align: left; /* Alinha o texto à esquerda */
     color: #000000;
 }
 
@@ -1165,6 +1190,18 @@ header.scrolled .cta-button.header-cta {
     .carousel-item {
         max-width: 350px;
     }
+    .cases-section .cases-layout-container {
+        flex-direction: column; /* Empilha o texto e os cards */
+        align-items: center; /* Centraliza os itens empilhados */
+        gap: 40px;
+    }
+    .cases-section .cases-intro-content {
+        max-width: 800px; /* Permite que o texto ocupe mais largura */
+        text-align: center; /* Centraliza o texto quando empilhado */
+    }
+    .cases-grid {
+        max-width: 650px; /* Ajusta a largura máxima do grid de cards */
+    }
 }
 
 @media (max-width: 768px) { /* Tablet Portrait e Mobile */
@@ -1361,6 +1398,14 @@ header.scrolled .cta-button.header-cta {
     .fixed-cta-bar .bar-cta-button {
         padding: 8px 15px;
         font-size: 0.85em;
+    }
+    .cases-section .cases-intro-content h2 {
+        font-size: 2.2em;
+    }
+    .cases-grid {
+        grid-template-columns: 1fr; /* Um card por linha */
+        max-width: 400px; /* Limita a largura dos cards em mobile */
+        margin: 0 auto; /* Centraliza o grid */
     }
 }
 
