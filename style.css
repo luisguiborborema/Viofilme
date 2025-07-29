@@ -111,7 +111,7 @@ header.scrolled .cta-button.header-cta {
 /* --- Seção Hero --- */
 .hero {
      /* Imagem de fundo */
-    background-image: url('logo_sem_fundo.png'); /* SUBSTITUA PELO NOME E CAMINHO DA SUA IMAGEM */
+    background-image: url('Imagens/logo_sem_fundo.png'); /* SUBSTITUA PELO NOME E CAMINHO DA SUA IMAGEM */
     background-size: cover; /* Faz a imagem cobrir toda a área, cortando se necessário */
     background-position: center center; /* Centraliza a imagem */
     background-repeat: no-repeat; /* Evita que a imagem se repita */
@@ -184,7 +184,6 @@ header.scrolled .cta-button.header-cta {
 .pain-points-section {
     background-color: #f1f1f1; /* Cor de fundo (Secundária) */
     padding: 80px 20px;
-    text-align: center;
 }
 .pain-points-section h2 {
     font-size: 2.8em;
@@ -242,7 +241,6 @@ header.scrolled .cta-button.header-cta {
 .pillars-intro-section {
     background-color: #458f8e; /* Cor de fundo (Principal) */
     padding: 80px 20px;
-    text-align: center;
     color: #f1f1f1; /* Texto secundário/claro */
 }
 .pillars-intro-section h2 {
@@ -356,7 +354,6 @@ header.scrolled .cta-button.header-cta {
 .philosophy-section {
     background-color: #458f8e; /* Cor principal */
     padding: 80px 20px;
-    text-align: center;
     color: #f1f1f1;
 }
 
@@ -437,7 +434,6 @@ header.scrolled .cta-button.header-cta {
 .process-section {
     background-color: #f1f1f1;
     padding: 80px 20px;
-    text-align: center;
 }
 
 .process-section h2 {
@@ -506,7 +502,6 @@ header.scrolled .cta-button.header-cta {
 .cases-section {
     background-color: #458f8e; /* Cor principal */
     padding: 80px 20px;
-    text-align: left; /* ALTERADO DE 'center' PARA 'left' */
     color: #f1f1f1;
 }
 
@@ -521,28 +516,8 @@ header.scrolled .cta-button.header-cta {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     max-width: 1000px;
-    margin: 0;
+    margin: 0 auto;
 }
-/* Layout flexível para a seção de cases */
-.cases-container {
-    display: flex;
-    align-items: center; /* Alinha verticalmente o título e os cards */
-    gap: 60px; /* Espaço entre o título e os cards */
-}
-
-.cases-header {
-    flex: 1; /* Define que a coluna do título é flexível */
-    min-width: 280px; /* Largura mínima para o título */
-}
-
-.cases-header h2 {
-   margin-bottom: 0; /* Remove a margem que não é mais necessária */
-}
-
-.cases-grid {
-    flex: 2; /* Faz a grade de cards ocupar o dobro do espaço do título */
-}
-
 
 .case-item {
     background-color: #ffffff;
@@ -580,7 +555,7 @@ header.scrolled .cta-button.header-cta {
 .faq-section {
     padding: 80px 20px;
     background-color: #f1f1f1; /* Fundo claro (Secundária) */
-    text-align: center;
+    text-align: center; /* Centraliza o título e a descrição */
 }
 
 .faq-section h2 {
@@ -665,7 +640,6 @@ header.scrolled .cta-button.header-cta {
 .cta-final-section {
     background-color: #458f8e; /* Cor principal */
     padding: 80px 20px;
-    text-align: center;
     color: #f1f1f1;
 }
 
@@ -894,7 +868,276 @@ header.scrolled .cta-button.header-cta {
 .footer-bottom p a:hover {
     color: #458f8e; /* Cor desejada no hover */
 }
+/* --- Utilidades de Alinhamento de Conteúdo --- */
+.section.align-center {
+    text-align: center;
+}
 
+.section.align-left {
+    text-align: left;
+}
+
+.section.align-left .section-description,
+.section.align-left h2 {
+     max-width: 800px; /* Mantém uma largura de linha legível */
+     margin-left: 0;
+     margin-right: auto;
+}
+
+/* Ajuste para que a descrição também não fique centralizada quando o texto for à esquerda */
+.section.align-left .section-description {
+    text-align: left;
+}
+
+.section.align-right {
+    text-align: right;
+}
+
+.section.align-right .section-description,
+.section.align-right h2 {
+    max-width: 800px; /* Mantém uma largura de linha legível */
+    margin-right: 0;
+    margin-left: auto;
+}
+
+/* Ajuste para que a descrição também não fique centralizada quando o texto for à direita */
+.section.align-right .section-description {
+    text-align: right;
+}
+/* Botão de CTA Fixo (Flutuante) */
+.fixed-cta-button {
+    position: fixed; /* Fixa o botão na tela */
+    bottom: 30px; /* Distância do fundo */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta para o centro */
+    background-color: #458f8e; /* Cor do seu CTA */
+    color: #f1f1f1; /* Cor do texto do CTA */
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra para destacá-lo */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    display: flex; /* Para centralizar texto se necessário */
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; /* Impede quebra de linha no texto */
+}
+
+.fixed-cta-button:hover {
+    background-color: #3a8a89; /* Cor de hover ligeiramente mais escura */
+    transform: translateX(-50%) translateY(-3px); /* Pequeno efeito de elevação */
+}
+/* Quando o botão deve "parar" */
+.fixed-cta-button.stop-at-faq {
+    position: absolute; /* Altera para posição absoluta */
+    transform: translateX(-50%); /* Mantém o translate para centralizar */
+    /* A propriedade 'bottom' será definida via JavaScript para posicioná-lo no lugar certo */
+}
+/* Estilos do Modal */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed; /* Fica sobre tudo */
+    z-index: 1001; /* Z-index maior que o botão fixo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Adiciona scroll se o conteúdo for muito grande */
+    background-color: rgba(0,0,0,0.6); /* Fundo escuro transparente */
+    display: flex; /* Flexbox para centralizar o conteúdo */
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Inicia invisível */
+    visibility: hidden; /* Esconde o modal */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1; /* Torna o modal visível */
+    visibility: visible; /* Muda a visibilidade para visível */
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    transform: translateY(20px); /* Inicia com uma leve translação para baixo */
+    animation: fadeInScale 0.3s ease-out; /* Adiciona uma animação */
+    border-radius: 15px; /* Bordas arredondadas */
+}
+.modal.active .modal-content {
+    transform: translateY(0); /* Desliza para a posição final */
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.close-button {
+    color: #000000;
+    font-size: 35px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #458f8e;
+    text-decoration: none;
+}
+
+.modal-content h2 {
+    color: #458f8e;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+.modal-content form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.modal-content form input[type="text"],
+.modal-content form input[type="email"],
+.modal-content form input[type="tel"],
+.modal-content form input[type="url"],
+.modal-content form select {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #000000; /* Cor do Texto */
+}
+.modal-content form select {
+    appearance: none; /* Remove a seta padrão do select */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13%205.1L146.2%20202.7%2018.8%2074.5a17.6%2017.6%200%200%200-25.3%2023.2l130.8%20131.7a17.6%2017.6%200%200%200%2025.3%200L287%2092.7a17.6%2017.6%200%200%200%200-23.2z%22%2F%3E%3C%2Fsvg%3E'); /* Adiciona uma seta personalizada */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 30px; /* Garante espaço para a seta */
+}
+.modal-content form select option {
+    color: #000000; /* Cor do texto das opções */
+    background-color: #f1f1f1; /* Cor de fundo das opções */
+}
+
+.modal-content form select option:first-child {
+    color: #999; /* Cor do placeholder "Selecionar faturamento" */
+}
+.modal-content form textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.modal-content form .cta-button {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.1em;
+    padding: 15px 25px;
+    background-color: #458f8e; /* Cor do CTA */
+    color: #f1f1f1; /* Cor do texto do CTA */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.modal-content form .cta-button:hover {
+    background-color: #3a8a89;
+    transform: translateY(-2px);
+}
+/* --- Barra de CTA Fixo (Flutuante) --- */
+.fixed-cta-bar {
+    position: fixed; /* Fixa a barra na tela */
+    bottom: 20px; /* Alinha na parte inferior da tela */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta para o centro */
+    max-width: 1000px; /* Limita a largura máxima da barra */
+    width: 90%; 
+    background-color: #000000; /* Fundo escuro, como no exemplo */
+    color: #f1f1f1; /* Cor do texto claro */
+    padding: 15px 20px;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.3); /* Sombra superior */
+    border-radius: 15px; /* Bordas arredondadas */
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo da barra */
+    align-items: center;
+    transition: bottom 0.3s ease, transform 0.3s ease; /* Para a transição quando ele "parar" */
+}
+
+.fixed-cta-bar.stop-at-footer {
+    position: absolute; /* Altera para posição absoluta quando a lógica JS ativar */
+    /* bottom será ajustado via JS */    
+    /* Remove o bottom: 0 padrão, pois será sobrescrito pelo JS */
+    transform: translateX(-50%);
+}
+
+
+.fixed-cta-bar .bar-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Espaça logo/texto do botão CTA */
+    align-items: center;
+    gap: 20px; /* Espaço entre os elementos */
+}
+
+.fixed-cta-bar .bar-logo {
+    max-width: 50px; /* Tamanho da logo na barra */
+    height: auto;
+    display: block;
+}
+
+.fixed-cta-bar .bar-text {
+    flex-grow: 1; /* Permite que o texto ocupe o máximo de espaço */
+    margin: 0; /* Remove margem padrão de parágrafo */
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #f1f1f1;
+    white-space: nowrap; /* Tenta manter o texto em uma linha */
+    overflow: hidden; /* Esconde o que exceder */
+    text-overflow: ellipsis; /* Adiciona "..." se o texto for cortado */
+}
+
+.fixed-cta-bar .bar-cta-button {
+    /* Reutiliza estilos de cta-button, mas com ajustes para a barra */
+    padding: 10px 20px;
+    font-size: 0.95em;
+    white-space: nowrap; /* Garante que o texto do botão não quebre */
+    background-color: #458f8e; /* Cor do seu CTA */
+    color: #f1f1f1; /* Cor do texto (secundária) */
+    box-shadow: none; /* Sem sombra adicional aqui, já tem na barra principal */
+    border-radius: 10px; /* Bordas arredondadas */
+}
+.fixed-cta-bar .bar-cta-button:hover {
+    background-color: #3a8a89;
+    transform: translateY(-2px);
+}
 /* --- Responsividade Geral --- */
 @media (max-width: 992px) { /* Tablet Landscape */
     .hero h1 {
@@ -922,15 +1165,6 @@ header.scrolled .cta-button.header-cta {
     .carousel-item {
         max-width: 350px;
     }
-    cases-container {
-        flex-direction: column; /* Empilha os itens verticalmente */
-        text-align: center; /* Centraliza o texto novamente em telas menores */
-    }
-
-    .cases-section h2 {
-        margin-bottom: 50px; /* Adiciona a margem de volta para espaçamento */
-    }
-
 }
 
 @media (max-width: 768px) { /* Tablet Portrait e Mobile */
@@ -1090,6 +1324,44 @@ header.scrolled .cta-button.header-cta {
     .social-icons-footer {
         justify-content: center;
     }
+    section.align-left,
+    .section.align-right {
+        text-align: center;
+    }
+
+    .section.align-left .section-description,
+    .section.align-left h2,
+    .section.align-right .section-description,
+    .section.align-right h2 {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    .fixed-cta-button {
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 12px 20px;
+        font-size: 0.9em;
+    }
+    .fixed-cta-button:hover {
+        transform: translateX(-50%) translateY(-3px); /* Pequeno efeito de elevação */
+    }
+    .fixed-cta-bar {
+        bottom: 15px; /* Ajusta a posição da barra fixa */
+        padding: 10px 15px;
+        border-radius: 10px;
+    }
+    .fixed-cta-bar .bar-logo {
+        max-width: 40px;
+    }
+    .fixed-cta-bar .bar-text {
+        font-size: 0.9em;
+    }
+    .fixed-cta-bar .bar-cta-button {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
 }
 
 @media (max-width: 480px) { /* Mobile Pequeno */
@@ -1105,5 +1377,48 @@ header.scrolled .cta-button.header-cta {
     .main-cta {
         padding: 12px 25px;
         font-size: 1em;
+    }
+    .fixed-cta-bar {
+        bottom: 10px; /* Margem ainda menor em celulares */
+        padding: 10px;
+        border-radius: 8px; /* Arredondamento menor ainda */
+    }
+    .fixed-cta-button {
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 18px;
+        font-size: 0.85em;
+    }
+    .fixed-cta-button:hover {
+        transform: translateX(-50%) translateY(-3px); /* Pequeno efeito de elevação */
+    }
+    .modal-content {
+        padding: 20px;
+        width: 95%;
+    }
+    .modal-content h2 {
+        font-size: 1.5em;
+    }
+    .modal-content form input,
+    .modal-content form textarea,
+    .modal-content form select,
+    .modal-content form .cta-button {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    .fixed-cta-bar .bar-content {
+        flex-direction: column; /* Empilha logo/texto e botão em telas menores */
+        text-align: center;
+        gap: 10px;
+    }
+    .fixed-cta-bar .bar-text {
+        font-size: 0.85em;
+        white-space: normal; /* Permite quebra de linha em mobile */
+        text-overflow: unset;
+    }
+    .fixed-cta-bar .bar-cta-button {
+        width: 100%; /* Botão ocupa largura total */
+        max-width: 250px; /* Limita o tamanho máximo */
     }
 }
