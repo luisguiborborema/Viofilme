@@ -10,13 +10,22 @@
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
-    <!-- Header | Cabeçalho -->
+    <!-- CTA Fixo-->
+    <div class="fixed-cta-bar" id="fixedCtaBar">
+        <div class="bar-content">
+            <img src="Imagens/logo_sem_fundo.png" alt="Logo Viofilme" class="bar-logo">
+            <p class="bar-text">Eleve sua empresa para o próximo nível!</p>
+            <a href="#" class="cta-button bar-cta-button" id="openFormButton">
+                Quero meu Diagnóstico!
+            </a>
+        </div>
+    </div>
+    <!-- Header -->
     <header>
         <div class="header-container">
             <div class="header-left">
-                <img src="logo_sem_fundo.png" alt="Logo da Viofilme" class="logo-img">
+                <img src="Imagens/logo_sem_fundo.png" alt="Logo da Viofilme" class="logo-img">
             </div>
-            <!-- Main Nav -->
             <nav class="main-nav">
                 <ul>
                     <li><a href="#solucoes">Soluções</a></li>
@@ -27,27 +36,26 @@
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
-            <!-- CTA Header | Cabeçalho -->
+            <!-- CTA Header -->
             <a href="#contato" class="cta-button header-cta">Quero meu Diagnóstico!</a>
         </div>
     </header>
-    <!-- Seção Hero -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content container">
             <p class="hero-intro">somos a</p>
             <h1>Viofilme</h1>
-            <h2>Criamos <span class="typing-effect"></span></h2>            
+            <h2>Criamos <span class="typing-effect"></span></h2>
             <p class="hero-subheadline">Unimos estratégia, criatividade e performance para construir marcas que encantam, convertem e se tornam inesquecíveis.</p>
             <a href="#contato" class="cta-button main-cta">Quero ser inesquecível!</a>
         </div>
     </section>
-    <!-- Seção Dores -->
-    <section class="section pain-points-section" id="problemas">
+    <!-- Pain Points Section -->
+    <section class="section pain-points-section align-left" id="problemas">
         <div class="container">
             <h2>Seu negócio é incrível. Sua presença digital também deveria ser.</h2>
             <p class="section-description">Muitos empreendedores sentem que há um abismo entre a qualidade do que oferecem e a forma como são vistos online.</p>
             <p class="pain-points-prompt">Talvez você se identifique com algum destes cenários:</p>
-            <!-- Lista: Pontos de Dor-->
             <div class="pain-points-list-container">
                 <ul>
                     <li>Minha loja física é incrível, mas meu digital não atrai clientes.</li>
@@ -56,19 +64,17 @@
                     <li>Recebo contatos, mas poucos realmente compram.</li>
                 </ul>
             </div>
-            <!-- CTA Dores -->
             <p class="pain-points-conclusion">Se você se viu aqui, entenda: o problema não é o seu esforço. É a falta de um ecossistema que conecte as pontas soltas.</p>
         </div>
     </section>
-    <!-- Seção Intro -->
-    <section class="section pillars-intro-section" id="solucoes">
+    <!-- Pillars Section -->
+    <section class="section pillars-intro-section align-center" id="solucoes">
         <div class="container">
             <h2>Menos serviços isolados. Mais um ecossistema de crescimento.</h2>
             <p class="section-description">No marketing moderno, as peças precisam trabalhar em harmonia. Na Viofilme, orquestramos três pilares fundamentais para que sua marca não apenas funcione, mas performe com excelência.</p>
             <p class="pillars-call-to-action">Conheça os três pilares da nossa entrega.</p>
         </div>
     </section>
-    <!-- Seção Soluções: Estratégia & Inteligência -->
     <section class="section pillar-section">
         <div class="container pillar-content-left">
             <div class="pillar-text">
@@ -82,11 +88,10 @@
                 </ul>
             </div>
             <div class="pillar-image">
-                <img src="estrategia.jpg" alt="Imagem representando Estratégia e Inteligência">
+                <img src="Imagens/estrategia.jpg" alt="Imagem representando Estratégia e Inteligência">
             </div>
         </div>
     </section>
-    <!-- Seção Soluções: Criatividade & Conteúdo -->
     <section class="section pillar-section">
         <div class="container pillar-content-right">
             <div class="pillar-text">
@@ -100,11 +105,10 @@
                 </ul>
             </div>
             <div class="pillar-image">
-                <img src="criatividade.jpg" alt="Imagem representando Criatividade e Conteúdo">
+                <img src="Imagens/criatividade.jpg" alt="Imagem representando Criatividade e Conteúdo">
             </div>
         </div>
     </section>
-    <!-- Seção Soluções: Performance & Vendas -->
     <section class="section pillar-section">
         <div class="container pillar-content-left">
             <div class="pillar-text">
@@ -119,28 +123,26 @@
                 </ul>
             </div>
             <div class="pillar-image">
-                <img src="vendas.png" alt="Imagem representando Performance e Vendas">
+                <img src="Imagens/vendas.png" alt="Imagem representando Performance e Vendas">
             </div>
         </div>
     </section>
 
-    <!-- Seção Diferencial -->
-    <section class="section philosophy-section" id="diferencial">
+    <section class="section philosophy-section align-center" id="diferencial">
         <div class="container">
             <h2>Nossa filosofia: Performance com Estética.</h2>
             <p class="section-description">Acreditamos que o resultado financeiro é consequência de uma marca forte e desejável. "Estética", para nós, não é apenas um vídeo bonito. É a inteligência criativa em cada ponto de contato: no texto de um anúncio, no design de um post, na estratégia de um funil de vendas. É fazer marketing que, além de vender, dá orgulho de mostrar.</p>
-            <!-- Media Day-->
             <div class="media-day-highlight">
                 <h3>O Ápice da Nossa Estética: O Media Day</h3>
                 <p>E quando se trata de dar vida a essa estratégia, nossa expertise em produção audiovisual entra em cena. Nosso <strong>Media Day</strong> não é uma simples "sessão de fotos". É o dia em que materializamos todo o universo da sua marca, criando um arsenal de conteúdo de altíssima qualidade que alimenta todo o ecossistema, da performance às redes sociais. É o nosso "caramba, além de tudo, eles ainda fazem isso!".</p>
                 <div class="before-after-carousel">
                     <div class="carousel-item">
                         <div class="before-image">
-                            <img src="feed2.png" alt="Feed antes da Viofilme">
+                            <img src="Imagens/feed2.png" alt="Feed antes da Viofilme">
                             <p>ANTES</p>
                         </div>
                         <div class="after-image">
-                            <img src="feed.png" alt="Feed depois da Viofilme">
+                            <img src="Imagens/feed.png" alt="Feed depois da Viofilme">
                             <p>DEPOIS</p>
                         </div>
                     </div>
@@ -148,12 +150,10 @@
             </div>
         </div>
     </section>
-    <!-- Seção Processo -->
-    <section class="section process-section" id="processo">
+    <section class="section process-section align-left" id="processo">
         <div class="container">
             <h2>Clareza antes da ação. Nosso Plano de Voo para o seu sucesso.</h2>
             <p class="section-description">Recusamos o "achismo". Nossa parceria começa com um mergulho profundo no seu negócio. O <strong>Diagnóstico 360°</strong> é a nossa "consulta médica" para garantir que cada ação seja cirúrgica e orientada a resultados, culminando em um <strong>Blueprint de Crescimento</strong> personalizado para sua empresa.</p>
-            <!-- Lista Processos -->
             <div class="process-flow">
                 <div class="process-step">
                     <i class="fas fa-search-dollar"></i> <h3>Diagnóstico 360°</h3>
@@ -177,43 +177,33 @@
             </div>
         </div>
     </section>
-    <!-- Seção Cases-->
-    <section class="section cases-section" id="cases">
-        <div class="container cases-container">
-            <div class="cases-header">
-                <h2>Histórias que contamos. Resultados que geramos.</h2>
-            </div>
+    <!-- Cases Section -->
+    <section class="section cases-section align-center" id="cases">
+        <div class="container">
+            <h2>Histórias que contamos. Resultados que geramos.</h2>
             <div class="cases-grid">
                 <div class="case-item">
-                    <img src="samsung.png" alt="Logo Cliente 1" class="case-logo">
+                    <img src="Imagens/samsung.png" alt="Logo Cliente 1" class="case-logo">
                     <h3>Alicia Bittencourt</h3>
                     <p class="case-challenge"><strong>O Desafio:</strong> A Alicia Bittencourt tinha uma excelente reputação offline, mas não conseguia traduzir isso em vendas no digital.</p>
                     <p class="case-solution"><strong>A Solução Viofilme:</strong> Implementamos nosso Diagnóstico 360° e reestruturamos a comunicação, unindo a gestão de redes sociais com tráfego local e um Media Day que capturou a essência da marca.</p>
                     <p class="case-result"><strong>O Resultado:</strong> +40% de leads qualificados em 3 meses e aumento de 25% no faturamento online.</p>
-                </div>
+                    </div>
                 <div class="case-item">
-                    <img src="apple.png" alt="Logo Cliente 2" class="case-logo">
-                    <h3>Steve Jobs</h3>
-                    <p class="case-challenge"><strong>O Desafio:</strong> Postavam conteúdo regularmente, mas sem uma estratégia clara, o engajamento era baixo e as vendas não decolavam.</p>
-                    <p class="case-solution"><strong>A Solução Viofilme:</strong> Criamos um plano de conteúdo focado em conversão, otimizamos as campanhas de tráfego pago e introduzimos automações de marketing.</p>
-                    <p class="case-result"><strong>O Resultado:</strong> Triplicamos o engajamento nas redes sociais e reduzimos o Custo por Lead em 30%.</p>
-                </div>
-                <div class="case-item">
-                    <img src="linkedin.png" alt="Logo Cliente 3" class="case-logo">
+                    <img src="Imagens/apple.png" alt="Logo Cliente 2" class="case-logo">
                     <h3>Pedro Borborema</h3>
                     <p class="case-challenge"><strong>O Desafio:</strong> Postavam conteúdo regularmente, mas sem uma estratégia clara, o engajamento era baixo e as vendas não decolavam.</p>
                     <p class="case-solution"><strong>A Solução Viofilme:</strong> Criamos um plano de conteúdo focado em conversão, otimizamos as campanhas de tráfego pago e introduzimos automações de marketing.</p>
                     <p class="case-result"><strong>O Resultado:</strong> Triplicamos o engajamento nas redes sociais e reduzimos o Custo por Lead em 30%.</p>
-                </div>
+                    </div>
             </div>
         </div>
     </section>
-    <!-- Seção FAQ -->
+    <!-- FAQ Section -->
     <section class="section faq-section" id="faq">
         <div class="container">
             <h2>Perguntas Frequentes</h2>
             <p class="section-description">Tire suas dúvidas sobre como a Viofilme pode impulsionar seu negócio.</p>
-            <!-- Itens FAQ -->
             <div class="faq-container">
                 <div class="faq-item">
                     <div class="faq-question">
@@ -267,23 +257,58 @@
             </div>
         </div>
     </section>
-    <!-- Seção Contato-->
-    <section class="section cta-final-section" id="contato">
+    <!-- CTA Final Section -->
+    <section class="section cta-final-section align-center" id="contato">
         <div class="container">
             <h2>Pronto para ter uma marca com alma e um negócio com resultado?</h2>
             <p class="section-description">Chega de ações isoladas e resultados frustrantes. Vamos construir juntos um ecossistema de marketing que coloca sua marca no lugar que ela merece. O primeiro passo é o nosso Diagnóstico Estratégico.</p>
             <a href="https://wa.me/27992463273?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20quero%20meu%20Diagn%C3%B3stico%20Estrat%C3%A9gico!" class="cta-button main-cta">Quero o meu Diagnóstico Estratégico!</a>
-            <!-- CTA Final | Contato -->
             <p class="cta-objection">Sem compromisso. Apenas uma conversa honesta sobre o potencial de crescimento do seu negócio.</p>
         </div>
     </section>
-    <!-- Footer | Rodapé -->
+
+    <!-- Formulário CTA Fixo -->
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Preencha o formulário e fale com um dos nossos especialistas</h2>
+            <form action="#" method="POST"> <label for="empresa">Qual o nome da sua empresa?</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Viofilme" required>
+
+                <label for="nome">Seu nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Guilherme" required>
+
+                <label for="email">Seu melhor E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="viofilme@gmail.com" required>
+
+                <label for="telefone">Seu WhatsApp para contato:</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(XX)XXXXX-XXXX" required>
+
+                <label for="redes">Link do seu site ou @ do Instagram:</label>
+                <input type="url" id="redes" name="redes" placeholder="viofilme.com ou @viofilme" required>
+
+                <label for="faturamento">Qual sua média de faturamento mensal?</label>
+                <select id="faturamento" name="faturamento" required>
+                    <option value="">Selecionar faturamento</option>
+                    <option value="0-10k">Até 10 mil reais</option>
+                    <option value="10k-25k">Entre 10.000 e 25.000 reais</option>
+                    <option value="25k-50k">Entre 25.000 e 50.000 reais</option>
+                    <option value="50k-100k">Entre 50.000 e 100.000 reais</option>
+                    <option value="100k-500k">Entre 100.000 e 500.000 reais</option>
+                    <option value="500k-1m">Entre 500.000 e 1 milhão de reais</option>
+                    <option value="1m-100m">Mais de 1 milhão de reais</option>
+                </select>
+
+                <button type="submit" class="cta-button">Receber Diagnóstico</button>
+            </form>
+        </div>
+    </div>
+    <!-- Footer -->
     <footer class="main-footer">
-        <!-- Texto abaixo da Logo -->
         <div class="footer-content">
             <div class="footer-column footer-about">
                 <div class="footer-logo">
-                    <img src="logo_sem_fundo.png" alt="Logo da Viofilme" class="footer-logo-img">
+                    <img src="Imagens/logo_sem_fundo.png" alt="Logo da Viofilme" class="footer-logo-img">
                     </div>
                 <p>Marketing Digital que Vende e Conteúdo que Encanta.</p>
             </div>
@@ -310,11 +335,10 @@
                 <p class="footer-phone"><a href="https://wa.me/27992463273?text=Ol%C3%A1%2C%20vim%20do%20site" target="_blank">Converse no WhatsApp: (27)99246-3273</a></p>
             </div>
         </div>
-        <!-- Footer/Rodapé | Política de Privacidade-->
         <div class="footer-bottom">
-           <p>&copy; 2025 Viofilme &middot; Todos os direitos reservados &middot; <a href="#">Política de Privacidade</a> &middot; <a href="#">Termos de Uso</a> &middot; CNPJ: 59.692.550/0001-61</p>
+           <p>&copy; 2025 Viofilme &middot; Todos os direitos reservados &middot; Política de Privacidade &middot; Termos de Uso &middot; CNPJ: 59.692.550/0001-61</p>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
