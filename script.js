@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Marcar Link da Navbar Ativo (Scrollspy) ---
     const navLinks = document.querySelectorAll('.main-nav ul li a');
-    // Adicionado o ID 'home' para a seção hero para o scrollspy funcionar corretamente
     const sections = document.querySelectorAll('section[id]');
     const header = document.querySelector('header');
 
@@ -11,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const headerHeight = header ? header.offsetHeight : 0;
 
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - headerHeight - 50; // Um pequeno offset
+            const sectionTop = section.offsetTop - headerHeight - 50;
             if (window.scrollY >= sectionTop) {
                 currentActiveSectionId = section.getAttribute('id');
             }
@@ -25,10 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     window.addEventListener('scroll', activateNavLinkOnScroll);
-    activateNavLinkOnScroll(); // Executa uma vez ao carregar a página
+    activateNavLinkOnScroll();
 
-       // --- Reduzir Header ao Scroll ---
-    const scrollThreshold = 100; // Distância em pixels para começar a diminuir o header
+    // --- Reduzir Header ao Scroll ---
+    const scrollThreshold = 100;
 
     function handleHeaderShrink() {
         if (window.scrollY > scrollThreshold) {
@@ -37,16 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove('scrolled');
         }
     }
-
-    // Adicione um ouvinte de evento de rolagem
     window.addEventListener('scroll', handleHeaderShrink);
-    // Execute a função uma vez no carregamento para caso a página já carregue scrollada
     handleHeaderShrink();
 
 
     // --- Código do Efeito de Digitação (Typing Effect) ---
-    // REMOVIDO: O efeito de digitação não será mais usado, o H2 é estático.
-    
     const typingElement = document.querySelector('.typing-effect');
     if (typingElement) {
         const textToType = [
@@ -133,137 +127,99 @@ document.addEventListener('DOMContentLoaded', function() {
         ScrollReveal().reveal('.cta-final-section .main-cta', { origin: 'bottom', delay: 200 });
         ScrollReveal().reveal('.cta-final-section .cta-objection', { origin: 'bottom', delay: 300 });
     }
-// --- Funcionalidade do Acordeão (FAQ) ---
+
+    // --- Funcionalidade do Acordeão (FAQ) ---
     const faqQuestions = document.querySelectorAll('.faq-question');
 
     faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
-            const faqItem = question.closest('.faq-item'); // Encontra o pai .faq-item
+            const faqItem = question.closest('.faq-item');
             const faqAnswer = faqItem.querySelector('.faq-answer');
 
-            // Verifica se este item já está ativo
             const isActive = faqItem.classList.contains('active');
 
-            // Fecha todas as outras FAQs
             document.querySelectorAll('.faq-item').forEach(item => {
                 if (item !== faqItem && item.classList.contains('active')) {
                     item.classList.remove('active');
                     item.querySelector('.faq-answer').style.maxHeight = '0';
-                    item.querySelector('.faq-question .faq-toggle-icon').style.transform = 'rotate(0deg)'; // Reseta ícone
+                    item.querySelector('.faq-question .faq-toggle-icon').style.transform = 'rotate(0deg)';
                 }
             });
 
-            // Abre/Fecha a FAQ clicada
             faqItem.classList.toggle('active');
             if (faqItem.classList.contains('active')) {
-                // Define max-height para a scrollHeight do conteúdo para transição suave
                 faqAnswer.style.maxHeight = faqAnswer.scrollHeight + 'px';
-                question.querySelector('.faq-toggle-icon').style.transform = 'rotate(45deg)'; // Gira o ícone
+                question.querySelector('.faq-toggle-icon').style.transform = 'rotate(45deg)';
             } else {
                 faqAnswer.style.maxHeight = '0';
-                question.querySelector('.faq-toggle-icon').style.transform = 'rotate(0deg)'; // Reseta ícone
+                question.querySelector('.faq-toggle-icon').style.transform = 'rotate(0deg)';
             }
         });
     });
-/*
-     // --- Código do Chatbot ---
-    const chatbotToggleButton = document.getElementById('chatbot-toggle-button');
-    const chatbotWidget = document.getElementById('chatbot-widget');
-    const chatbotCloseButton = document.getElementById('chatbot-close-button');
-    const chatMessages = document.getElementById('chat-messages');
-    const chatInput = document.getElementById('chat-input');
-    const chatSendButton = document.getElementById('chat-send-button');
 
-    // ** IMPORTANTE: Substitua esta URL pela URL do seu Custom Webhook do Make **
-    const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/jwvgtcckq9x778nsciyjxq5reu5m2dxo';
+     // --- Funcionalidade para a barra fixa parar na seção FAQ (agora, no rodapé) ---
+    const fixedCtaBar = document.getElementById('fixedCtaBar'); // Seleciona a barra
+    const footer = document.querySelector('footer'); // O rodapé
+    const defaultBottomOffset = 20; // Corresponde ao 'bottom' definido no CSS para .fixed-cta-bar
 
-    chatbotToggleButton.addEventListener('click', () => {
-        chatbotWidget.classList.toggle('open');
-        if (chatbotWidget.classList.contains('open')) {
-            chatInput.focus(); // Foca no input quando o chat abre
-            chatMessages.scrollTop = chatMessages.scrollHeight; // Rola para o final
-        }
-    });
+    if (fixedCtaBar && footer) {
+        function handleFixedCtaBarStop() {
+            const scrollPosition = window.scrollY || window.pageYOffset;
+            const footerTop = footer.offsetTop; // Topo do rodapé
+            const barHeight = fixedCtaBar.offsetHeight; // Altura da barra
+            const windowHeight = window.innerHeight; // Altura da viewport
 
-    chatbotCloseButton.addEventListener('click', () => {
-        chatbotWidget.classList.remove('open');
-    });
+            // Calcula o ponto de rolagem onde o *fundo da barra* (se fixed)
+            // se encontraria com o *topo do rodapé*, considerando a margem desejada.
+            // Queremos que a barra pare com `defaultBottomOffset` de distância do topo do rodapé.
+            // Então, a barra irá "colar" quando o (scrollPosition + windowHeight) atingir:
+            // (footerTop - defaultBottomOffset)
+            const stopPoint = footerTop - defaultBottomOffset;
 
-    // Função para adicionar mensagem ao chat
-    function addMessage(text, sender) {
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message', `${sender}-message`);
-        messageDiv.textContent = text;
-        chatMessages.appendChild(messageDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight; // Rola para a última mensagem
-    }
+            // Se a parte inferior da viewport (scrollPosition + windowHeight)
+            // estiver abaixo ou no ponto onde a barra deve parar
+            // E o topo da barra (scrollPosition + windowHeight - barHeight - defaultBottomOffset)
+            // não tiver passado o topo do footer (para evitar que a barra suba demais)
+            if (scrollPosition + windowHeight > stopPoint) {
+                fixedCtaBar.style.position = 'absolute';
 
-    // Função para enviar mensagem para o Make
-    async function sendMessageToMake(message) {
-        // Adiciona a mensagem do usuário imediatamente
-        addMessage(message, 'user');
-        chatInput.value = ''; // Limpa o input
-
-        // Adiciona uma mensagem de "digitando..." do bot
-        const typingIndicator = document.createElement('div');
-        typingIndicator.classList.add('message', 'bot-message');
-        typingIndicator.textContent = 'Digitando...';
-        typingIndicator.id = 'typing-indicator';
-        chatMessages.appendChild(typingIndicator);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        try {
-            const response = await fetch(MAKE_WEBHOOK_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ message: message })
-            });
-
-            // Remove o indicador de digitando
-            if (document.getElementById('typing-indicator')) {
-                document.getElementById('typing-indicator').remove();
-            }
-
-            if (!response.ok) {
-                throw new Error(`Erro HTTP! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-            // Espera que o Make retorne um JSON como: {"response": "Sua mensagem aqui"}
-            if (data.response) {
-                addMessage(data.response, 'bot');
+                // Calculamos o 'bottom' em relação ao documento (ou ao pai com position: relative, geralmente body/html)
+                // É a distância do final do documento até o topo do rodapé, mais a margem desejada.
+                fixedCtaBar.style.bottom = `${(document.body.scrollHeight - footerTop) + defaultBottomOffset}px`;
             } else {
-                addMessage("Ocorreu um erro ao processar sua mensagem. Tente novamente.", 'bot');
+                fixedCtaBar.style.position = 'fixed';
+                fixedCtaBar.style.bottom = `${defaultBottomOffset}px`; // Volta à posição fixa original
             }
-
-        } catch (error) {
-            console.error('Erro ao enviar mensagem para o Make:', error);
-            // Remove o indicador de digitando em caso de erro
-            if (document.getElementById('typing-indicator')) {
-                document.getElementById('typing-indicator').remove();
-            }
-            addMessage("Desculpe, não consegui me conectar no momento. Por favor, tente mais tarde.", 'bot');
         }
+
+        window.addEventListener('scroll', handleFixedCtaBarStop);
+        window.addEventListener('resize', handleFixedCtaBarStop);
+        handleFixedCtaBarStop(); // Executa ao carregar para definir a posição inicial
     }
 
-    // Evento de clique no botão de enviar
-    chatSendButton.addEventListener('click', () => {
-        const message = chatInput.value.trim();
-        if (message) {
-            sendMessageToMake(message);
-        }
-    });
+    // --- Lógica para Abrir/Fechar o Modal de Formulário ---
+    const openFormButton = document.getElementById('openFormButton');
+    const formModal = document.getElementById('formModal');
+    const closeButton = document.querySelector('#formModal .close-button');
 
-    // Evento de "Enter" no campo de input
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            const message = chatInput.value.trim();
-            if (message) {
-                sendMessageToMake(message);
+    if (openFormButton && formModal && closeButton) {
+        openFormButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            formModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeButton.addEventListener('click', function() {
+            formModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == formModal) {
+                formModal.classList.remove('active');
+                document.body.style.overflow = '';
             }
-        }
-    });
-*/
+        });
+    }
+
 });
