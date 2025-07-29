@@ -111,7 +111,7 @@ header.scrolled .cta-button.header-cta {
 /* --- Seção Hero --- */
 .hero {
      /* Imagem de fundo */
-    background-image: url('Imagens/logo_sem_fundo.png'); /* SUBSTITUA PELO NOME E CAMINHO DA SUA IMAGEM */
+    background-image: url('logo_sem_fundo.png'); /* SUBSTITUA PELO NOME E CAMINHO DA SUA IMAGEM */
     background-size: cover; /* Faz a imagem cobrir toda a área, cortando se necessário */
     background-position: center center; /* Centraliza a imagem */
     background-repeat: no-repeat; /* Evita que a imagem se repita */
