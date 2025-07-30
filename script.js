@@ -1,18 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // VARIÁVEIS GLOBAIS 
+
+    // --- FUNÇÃO AUXILIAR DE THROTTLE (NOVA) ---
+    // Esta função controla a frequência com que uma outra função pode ser executada.
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
+
+    // --- VARIÁVEIS GLOBAIS ---
     const header = document.querySelector('header');
     const navLinks = document.querySelectorAll('.main-nav ul li a');
-    const sections = document.querySelectorAll('section[id]');        
-        
+    const sections = document.querySelectorAll('section[id]');
+
     // --- Marcar Link da Navbar Ativo (Scrollspy) ---
     function activateNavLinkOnScroll() {
         const headerOffset = 80;
         let currentActiveSectionId = '';
+        const scrollY = window.scrollY || window.pageYOffset;
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop - headerOffset;
-            if (window.scrollY >= sectionTop) {
+            if (scrollY >= sectionTop) {
                 currentActiveSectionId = section.getAttribute('id');
             }
         });
@@ -20,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
         navLinks.forEach(link => {
             link.classList.remove('active');
             const linkHref = link.getAttribute('href');
-            // Adicionada uma verificação para garantir que o link não é nulo e corresponde ao ID
             if (linkHref && linkHref.substring(1) === currentActiveSectionId) {
                 link.classList.add('active');
             }
@@ -28,17 +43,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- Reduzir Header ao Scroll ---
-    const scrollThreshold = 100;
-
     function handleHeaderShrink() {
-        if (window.scrollY > scrollThreshold) {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const scrollThreshold = 100;
+        if (scrollY > scrollThreshold) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
     }
-    window.addEventListener('scroll', handleHeaderShrink);
+
+    // --- APLICAÇÃO DO THROTTLE (MUDANÇA IMPORTANTE) ---
+    // Agora, as funções só rodam a cada 100ms, evitando a sobrecarga.
+    window.addEventListener('scroll', throttle(handleHeaderShrink, 100));
+    window.addEventListener('scroll', throttle(activateNavLinkOnScroll, 100));
+
+    // Executa as funções uma vez no carregamento da página
     handleHeaderShrink();
+    activateNavLinkOnScroll();
+
 
     // --- Código do Efeito de Digitação (Typing Effect) ---
     const typingElement = document.querySelector('.typing-effect');
@@ -91,37 +114,28 @@ document.addEventListener('DOMContentLoaded', function() {
             reset: false
         });
 
-        // Revelar elementos da Viofilme
         ScrollReveal().reveal('.hero-content h1', { origin: 'top' });
         ScrollReveal().reveal('.hero-content h2', { origin: 'bottom', delay: 200 });
         ScrollReveal().reveal('.hero-subheadline', { origin: 'bottom', delay: 400 });
         ScrollReveal().reveal('.main-cta', { origin: 'bottom', delay: 600 });
-
         ScrollReveal().reveal('.pain-points-section h2', { origin: 'top' });
         ScrollReveal().reveal('.pain-points-section .section-description', { origin: 'top', delay: 100 });
         ScrollReveal().reveal('.pain-points-prompt', { origin: 'left', delay: 200 });
         ScrollReveal().reveal('.pain-points-list-container li', { origin: 'left', interval: 100, delay: 300 });
-
         ScrollReveal().reveal('.pillars-intro-section h2', { origin: 'top' });
         ScrollReveal().reveal('.pillars-intro-section .section-description', { origin: 'top', delay: 100 });
         ScrollReveal().reveal('.pillars-call-to-action', { origin: 'bottom', delay: 200 });
-
         ScrollReveal().reveal('.pillar-section .pillar-text', { origin: 'left', delay: 100 });
         ScrollReveal().reveal('.pillar-section .pillar-image', { origin: 'right', delay: 300 });
-
-        // Novas seções: Filosofia (Diferencial), Processo, Cases e CTA Final
         ScrollReveal().reveal('.philosophy-section h2', { origin: 'top' });
         ScrollReveal().reveal('.philosophy-section .section-description', { origin: 'top', delay: 100 });
         ScrollReveal().reveal('.media-day-highlight', { origin: 'bottom', delay: 200 });
         ScrollReveal().reveal('.before-after-carousel .carousel-item', { origin: 'bottom', interval: 150, delay: 300 });
-
         ScrollReveal().reveal('.process-section h2', { origin: 'top' });
         ScrollReveal().reveal('.process-section .section-description', { origin: 'top', delay: 100 });
         ScrollReveal().reveal('.process-step', { origin: 'bottom', interval: 100, delay: 200 });
-
         ScrollReveal().reveal('.cases-section h2', { origin: 'top' });
         ScrollReveal().reveal('.case-item', { origin: 'bottom', interval: 150, delay: 100 });
-
         ScrollReveal().reveal('.cta-final-section h2', { origin: 'top' });
         ScrollReveal().reveal('.cta-final-section .section-description', { origin: 'top', delay: 100 });
         ScrollReveal().reveal('.cta-final-section .main-cta', { origin: 'bottom', delay: 200 });
@@ -130,71 +144,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Funcionalidade do Acordeão (FAQ) ---
     const faqQuestions = document.querySelectorAll('.faq-question');
-
     faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
             const faqItem = question.closest('.faq-item');
-            const faqAnswer = faqItem.querySelector('.faq-answer');
-
             const isActive = faqItem.classList.contains('active');
-
-            document.querySelectorAll('.faq-item').forEach(item => {
-                if (item !== faqItem && item.classList.contains('active')) {
-                    item.classList.remove('active');
-                    item.querySelector('.faq-answer').style.maxHeight = '0';
-                    item.querySelector('.faq-question .faq-toggle-icon').style.transform = 'rotate(0deg)';
-                }
+            document.querySelectorAll('.faq-item.active').forEach(item => {
+                if (item !== faqItem) item.classList.remove('active');
             });
-
-            faqItem.classList.toggle('active');
-            if (faqItem.classList.contains('active')) {
-                faqAnswer.style.maxHeight = faqAnswer.scrollHeight + 'px';
-                question.querySelector('.faq-toggle-icon').style.transform = 'rotate(45deg)';
-            } else {
-                faqAnswer.style.maxHeight = '0';
-                question.querySelector('.faq-toggle-icon').style.transform = 'rotate(0deg)';
-            }
+            if (!isActive) faqItem.classList.add('active');
         });
     });
 
-     // --- Funcionalidade para a barra fixa parar na seção FAQ (agora, no rodapé) ---
-    const fixedCtaBar = document.getElementById('fixedCtaBar'); // Seleciona a barra
-    const faqSection = document.querySelector('#faq'); // O rodapé
-    const defaultBottomOffset = 20; // Corresponde ao 'bottom' definido no CSS para .fixed-cta-bar
+    // --- Funcionalidade para a barra fixa parar na seção FAQ ---
+    const fixedCtaBar = document.getElementById('fixedCtaBar');
+    const faqSection = document.querySelector('#faq');
+    const footer = document.querySelector('footer.main-footer');
 
-    if (fixedCtaBar && faqSection) {
+    if (fixedCtaBar && footer) {
         function handleFixedCtaBarStop() {
-            const scrollPosition = window.scrollY || window.pageYOffset;
-            const faqSectionTop = faqSection.offsetTop; // Topo do rodapé
-            const windowHeight = window.innerHeight; // Altura da viewport
+            const barHeight = fixedCtaBar.offsetHeight;
+            const footerTop = footer.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
 
-            // Calcula o ponto de rolagem onde o *fundo da barra* (se fixed)
-            // se encontraria com o *topo do rodapé*, considerando a margem desejada.
-            // Queremos que a barra pare com `defaultBottomOffset` de distância do topo do rodapé.
-            // Então, a barra irá "colar" quando o (scrollPosition + windowHeight) atingir:
-            // (footerTop - defaultBottomOffset)
-            const stopPoint = faqSectionTop - defaultBottomOffset;
-
-            // Se a parte inferior da viewport (scrollPosition + windowHeight)
-            // estiver abaixo ou no ponto onde a barra deve parar
-            // E o topo da barra (scrollPosition + windowHeight - barHeight - defaultBottomOffset)
-            // não tiver passado o topo do footer (para evitar que a barra suba demais)
-            if (scrollPosition + windowHeight > stopPoint) {
-                fixedCtaBar.style.position = 'absolute';
-
-                // Calculamos o 'bottom' em relação ao documento (ou ao pai com position: relative, geralmente body/html)
-                // É a distância do final do documento até o topo do rodapé, mais a margem desejada.
-                fixedCtaBar.style.bottom = `${(document.body.scrollHeight - faqSectionTop) + defaultBottomOffset}px`;
+            if (footerTop < windowHeight) {
+                fixedCtaBar.style.transform = `translate(-50%, ${footerTop - windowHeight}px)`;
             } else {
-                fixedCtaBar.style.position = 'fixed';
-                fixedCtaBar.style.bottom = `${defaultBottomOffset}px`; // Volta à posição fixa original
+                fixedCtaBar.style.transform = 'translateX(-50%)';
             }
         }
-
-        window.addEventListener('scroll', handleFixedCtaBarStop);
-        window.addEventListener('resize', handleFixedCtaBarStop);
-        handleFixedCtaBarStop(); // Executa ao carregar para definir a posição inicial
+        window.addEventListener('scroll', throttle(handleFixedCtaBarStop, 50));
+        window.addEventListener('resize', throttle(handleFixedCtaBarStop, 50));
+        handleFixedCtaBarStop();
     }
+
 
     // --- Lógica para Abrir/Fechar o Modal de Formulário ---
     const openFormButton = document.getElementById('openFormButton');
@@ -220,4 +202,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
 });
