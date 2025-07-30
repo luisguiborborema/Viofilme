@@ -237,6 +237,37 @@ header.scrolled .cta-button.header-cta {
     max-width: 800px;
     margin: 0 auto;
 }
+/* --- Estilos para o novo layout da seção "Pain Points" --- */
+
+/* 1. Transforma o container em um layout flexível de duas colunas */
+.pain-points-layout {
+    display: flex;
+    align-items: center; /* Alinha verticalmente os itens no centro */
+    gap: 50px; /* Espaço entre a coluna de texto e a imagem */
+}
+
+/* 2. Define que a coluna de texto ocupará metade do espaço */
+.pain-points-text-content {
+    flex: 1; /* Ocupa o espaço disponível */
+    max-width: 600px;
+}
+
+/* 3. Define que a coluna da imagem ocupará a outra metade */
+.pain-points-image-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 4. Estiliza a imagem para ser responsiva e ter um visual agradável */
+.pain-points-image-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Bordas arredondadas, como em outras seções */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1); /* Sombra sutil */
+}
+
 /* --- Seção: Onde Estratégia, Criatividade e Performance se Encontram. --- */
 .pillars-intro-section {
     background-color: #458f8e; /* Cor de fundo (Principal) */
@@ -694,6 +725,87 @@ header.scrolled .cta-button.header-cta {
     color: #f1f1f1;
     opacity: 0.8;
 }
+/* --- Seção de Formulário de Contato --- */
+.contact-form-section {
+    background-color: #458f8e;
+    padding: 80px 20px;
+    text-align: center;
+}
+/* Cor do título dentro do Form */
+.contact-form-section .contact-intro h2 {
+    font-size: 2.8em;
+    color: #f1f1f1;
+    margin-bottom: 20px;
+}
+
+.contact-form-section .contact-intro .section-description {
+    font-size: 1.1em;
+    color: #f1f1f1;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+
+.contact-form-section .form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    text-align: left;
+}
+
+.contact-form-section form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 30px;
+}
+
+.contact-form-section .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form-section .form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.contact-form-section form label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95em;
+}
+
+.contact-form-section form input,
+.contact-form-section form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.contact-form-section form .cta-button {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.1em;
+    padding: 15px 25px;
+    background-color: #458f8e;
+    color: #f1f1f1;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-form-section form .cta-button:hover {
+    background-color: #3a8a89;
+    transform: translateY(-2px);
+}
 
 /* Rodapé */
 .main-footer {
@@ -1113,16 +1225,8 @@ header.scrolled .cta-button.header-cta {
     display: flex;
     justify-content: center; /* Centraliza o conteúdo da barra */
     align-items: center;
-    transition: bottom 0.3s ease, transform 0.3s ease; /* Para a transição quando ele "parar" */
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease; /* Para a transição quando ele "parar" */
 }
-
-.fixed-cta-bar.stop-at-footer {
-    position: absolute; /* Altera para posição absoluta quando a lógica JS ativar */
-    /* bottom será ajustado via JS */    
-    /* Remove o bottom: 0 padrão, pois será sobrescrito pelo JS */
-    transform: translateX(-50%);
-}
-
 
 .fixed-cta-bar .bar-content {
     width: 100%;
@@ -1258,6 +1362,10 @@ header.scrolled .cta-button.header-cta {
         padding: 15px 30px;
         font-size: 1.1em;
     }
+    .contact-form-section form {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
     /* --- Responsividade para a Seção de Dores --- */
     .pain-points-section h2 {
         font-size: 2.2em;
@@ -1274,6 +1382,23 @@ header.scrolled .cta-button.header-cta {
     .pain-points-list-container ul li {
         font-size: 0.95em;
         padding-left: 25px;
+    }
+    .pain-points-layout {
+        flex-direction: column; /* Empilha as colunas verticalmente */
+    }
+
+    .pain-points-text-content {
+        /* Centraliza os títulos e parágrafos no mobile */
+        text-align: center;
+        margin-bottom: 40px; /* Adiciona espaço entre o texto e a imagem quando empilhados */
+    }
+
+    .pain-points-list-container {
+        /* Mantém a lista alinhada à esquerda para melhor legibilidade */
+        text-align: left;
+        max-width: 400px; /* Define uma largura máxima para a lista */
+        margin-left: auto;
+        margin-right: auto;
     }
     /* --- Responsividade para a Seção Pillars Intro --- */
     .pillars-intro-section h2 {
