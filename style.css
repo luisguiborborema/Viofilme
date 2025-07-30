@@ -15,12 +15,17 @@ body {
 
 /* --- Header --- */
 header {
-    background-color: #f1f1f1; /* Fundo branco para o header */
-    padding: 15px 0;
+    background-color: #f1f1f1;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
     z-index: 1000;
+    
+    /* MUDANÇAS PRINCIPAIS AQUI */
+    display: flex; /* Tornamos o header um container flex para alinhar o conteúdo */
+    align-items: center; /* Centraliza verticalmente o .header-container */
+    height: 80px; /* ALTURA MÍNIMA INICIAL - ajuste se desejar */
+    transition: height 0.4s ease, box-shadow 0.4s ease; /* Transição para a altura */
 }
 .header-container {
     max-width: 1200px;
@@ -31,16 +36,16 @@ header {
     align-items: center;
 }
 header.scrolled {
-    padding: 5px 0; /* Padding menor */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra mais pronunciada */
+    height: 55px; /* ALTURA MÍNIMA ENCOLHIDA - ajuste se desejar */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 header.scrolled .logo-img {
-    max-width: 60px; /* Logo menor quando scrollado */
+    max-width: 30px; /* Logo menor quando scrollado */
 }
 
 header.scrolled .main-nav ul li a {
-    font-size: 0.85em; /* Texto do menu menor */
+    font-size: 0.9em; /* Texto do menu menor */
 }
 
 header.scrolled .cta-button.header-cta {
