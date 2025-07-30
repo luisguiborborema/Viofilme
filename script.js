@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // --- FUNÇÃO AUXILIAR DE THROTTLE ---
+    // --- FUNÇÃO AUXILIAR DE THROTTLE (NOVA) ---
     // Esta função controla a frequência com que uma outra função pode ser executada.
     function throttle(func, limit) {
         let inThrottle;
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- APLICAÇÃO DO THROTTLE (MUDANÇA IMPORTANTE) ---
+    // --- APLICAÇÃO DO THROTTLE ---
     // Agora, as funções só rodam a cada 100ms, evitando a sobrecarga.
     window.addEventListener('scroll', throttle(handleHeaderShrink, 100));
     window.addEventListener('scroll', throttle(activateNavLinkOnScroll, 100));
@@ -155,24 +155,68 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- Funcionalidade para a barra fixa parar na seção FAQ ---
+// --- Funcionalidade para a barra fixa DESAPARECER após a seção FAQ ---
     const fixedCtaBar = document.getElementById('fixedCtaBar');
     const faqSection = document.querySelector('#faq');
 
     if (fixedCtaBar && faqSection) {
-        function handleFixedCtaBarStop() {
+        function handleFixedCtaVisibility() {
+            const faqRect = faqSection.getBoundingClientRect();
             const windowHeight = window.innerHeight;
-            const faqSectionTop = faqSection.getBoundingClientRect().top;
 
-            if (faqSectionTop < windowHeight) {
-                fixedCtaBar.style.transform = `translate(-50%, ${faqSectionTop - windowHeight}px)`;
+            // NOVA LÓGICA:
+            // A barra vai desaparecer quando o FINAL da seção FAQ (faqRect.bottom)
+            // estiver prestes a sair da tela, na parte de cima.
+            // Usamos 85% da altura da tela como gatilho.
+            if (faqRect.bottom < windowHeight * 0.85) {
+                // Esconde a barra
+                fixedCtaBar.style.opacity = '0';
+                fixedCtaBar.style.visibility = 'hidden';
+                fixedCtaBar.style.transform = 'translate(-50%, 150px)';
             } else {
+                // Mostra a barra
+                fixedCtaBar.style.opacity = '1';
+                fixedCtaBar.style.visibility = 'visible';
                 fixedCtaBar.style.transform = 'translateX(-50%)';
             }
         }
-        window.addEventListener('scroll', throttle(handleFixedCtaBarStop, 50));
-        window.addEventListener('resize', throttle(handleFixedCtaBarStop, 50));
-        handleFixedCtaBarStop();
+
+    // --- Mascara e Validação para Campos de Telefone ---
+    const phoneInputs = document.querySelectorAll('.phone-mask');
+
+    const handlePhoneInput = (e) => {
+        // 1. Remove todos os caracteres que não são dígitos
+        let value = e.target.value.replace(/\D/g, '');
+
+        // 2. Limita o número total de dígitos a 11
+        value = value.substring(0, 11);
+        let formattedValue = '';
+
+        // 3. Aplica a formatação (XX) XXXXX-XXXX dinamicamente
+        if (value.length > 0) {
+            formattedValue = '(' + value.substring(0, 2);
+        }
+        if (value.length > 2) {
+            formattedValue += ') ' + value.substring(2, 7);
+        }
+        if (value.length > 7) {
+            formattedValue += '-' + value.substring(7, 11);
+        }
+        
+        // 4. Atualiza o valor no campo do formulário
+        e.target.value = formattedValue;
+    };
+
+    // Adiciona o "ouvinte" de evento para cada campo de telefone
+    phoneInputs.forEach(input => {
+        input.addEventListener('input', handlePhoneInput);
+    });
+
+
+        // Os event listeners continuam os mesmos
+        window.addEventListener('scroll', throttle(handleFixedCtaVisibility, 100));
+        window.addEventListener('resize', throttle(handleFixedCtaVisibility, 100));
+        handleFixedCtaVisibility(); // Executa ao carregar
     }
 
 
