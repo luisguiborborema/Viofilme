@@ -1,16 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-    // --- Marcar Link da Navbar Ativo (Scrollspy) ---
+    
+    // VARIÁVEIS GLOBAIS 
+    const header = document.querySelector('header');
     const navLinks = document.querySelectorAll('.main-nav ul li a');
     const sections = document.querySelectorAll('section[id]');
-    const header = document.querySelector('header');
-
+    // FIM DO BLOCO A SER ADICIONADO
+        
+        
+    // --- Marcar Link da Navbar Ativo (Scrollspy) ---
     function activateNavLinkOnScroll() {
+        const headerOffset = 80;
         let currentActiveSectionId = '';
-        const headerHeight = header ? header.offsetHeight : 0;
 
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - headerHeight - 50;
+            const sectionTop = section.offsetTop - headerOffset;
             if (window.scrollY >= sectionTop) {
                 currentActiveSectionId = section.getAttribute('id');
             }
@@ -18,13 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + currentActiveSectionId) {
+            const linkHref = link.getAttribute('href');
+            // Adicionada uma verificação para garantir que o link não é nulo e corresponde ao ID
+            if (linkHref && linkHref.substring(1) === currentActiveSectionId) {
                 link.classList.add('active');
             }
         });
     }
-    window.addEventListener('scroll', activateNavLinkOnScroll);
-    activateNavLinkOnScroll();
 
     // --- Reduzir Header ao Scroll ---
     const scrollThreshold = 100;
@@ -38,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     window.addEventListener('scroll', handleHeaderShrink);
     handleHeaderShrink();
-
 
     // --- Código do Efeito de Digitação (Typing Effect) ---
     const typingElement = document.querySelector('.typing-effect');
@@ -220,5 +222,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
 });
