@@ -50,21 +50,29 @@
             <a href="#contato" class="cta-button main-cta">Quero ser inesquecível!</a>
         </div>
     </section>
-    <!-- Pain Points Section -->
-    <section class="section pain-points-section align-left" id="problemas">
-        <div class="container">
-            <h2>Seu negócio é incrível. Sua presença digital também deveria ser.</h2>
-            <p class="section-description">Muitos empreendedores sentem que há um abismo entre a qualidade do que oferecem e a forma como são vistos online.</p>
-            <p class="pain-points-prompt">Talvez você se identifique com algum destes cenários:</p>
-            <div class="pain-points-list-container">
-                <ul>
-                    <li>Minha loja física é incrível, mas meu digital não atrai clientes.</li>
-                    <li>Posto conteúdo todos os dias, mas não vejo o resultado em vendas.</li>
-                    <li>Somos ótimos no que fazemos, mas nossos concorrentes são mais vistos.</li>
-                    <li>Recebo contatos, mas poucos realmente compram.</li>
-                </ul>
+    <!-- Pain Points-->
+    <section class="section pain-points-section" id="problemas">
+        <div class="container pain-points-layout">
+
+            <div class="pain-points-text-content">
+                <h2>Seu negócio é incrível. Sua presença digital também deveria ser.</h2>
+                <p class="section-description">Muitos empreendedores sentem que há um abismo entre a qualidade do que oferecem e a forma como são vistos online.</p>
+                <p class="pain-points-prompt">Talvez você se identifique com algum destes cenários:</p>
+                <div class="pain-points-list-container">
+                    <ul>
+                        <li>Minha loja física é incrível, mas meu digital não atrai clientes.</li>
+                        <li>Posto conteúdo todos os dias, mas não vejo o resultado em vendas.</li>
+                        <li>Somos ótimos no que fazemos, mas nossos concorrentes são mais vistos.</li>
+                        <li>Recebo contatos, mas poucos realmente compram.</li>
+                    </ul>
+                </div>
+                <p class="pain-points-conclusion">Se você se viu aqui, entenda: o problema não é o seu esforço. É a falta de um ecossistema que conecte as pontas soltas.</p>
             </div>
-            <p class="pain-points-conclusion">Se você se viu aqui, entenda: o problema não é o seu esforço. É a falta de um ecossistema que conecte as pontas soltas.</p>
+
+            <div class="pain-points-image-content">
+                <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=2071&auto=format&fit=crop" alt="Empreendedor analisando a presença digital do seu negócio">
+            </div>
+
         </div>
     </section>
     <!-- Pillars Section -->
@@ -257,16 +265,55 @@
             </div>
         </div>
     </section>
-    <!-- CTA Final Section -->
-    <section class="section cta-final-section align-center" id="contato">
+    <!-- Form Section -->
+    <section class="section contact-form-section" id="contato">
         <div class="container">
-            <h2>Pronto para ter uma marca com alma e um negócio com resultado?</h2>
-            <p class="section-description">Chega de ações isoladas e resultados frustrantes. Vamos construir juntos um ecossistema de marketing que coloca sua marca no lugar que ela merece. O primeiro passo é o nosso Diagnóstico Estratégico.</p>
-            <a href="https://wa.me/27992463273?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20quero%20meu%20Diagn%C3%B3stico%20Estrat%C3%A9gico!" class="cta-button main-cta">Quero o meu Diagnóstico Estratégico!</a>
-            <p class="cta-objection">Sem compromisso. Apenas uma conversa honesta sobre o potencial de crescimento do seu negócio.</p>
+            <div class="contact-intro">
+                <h2>Pronto para ter uma marca com alma e um negócio com resultado?</h2>
+                <p class="section-description">Chega de ações isoladas e resultados frustrantes. Preencha o formulário abaixo para darmos o primeiro passo com o nosso Diagnóstico Estratégico. É sem compromisso, apenas uma conversa honesta sobre o potencial de crescimento do seu negócio.</p>
+            </div>
+            <div class="form-container">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="form-nome">Seu nome:</label>
+                        <input type="text" id="form-nome" name="nome" placeholder="Seu nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-empresa">Qual o nome da sua empresa?</label>
+                        <input type="text" id="form-empresa" name="empresa" placeholder="Nome da sua empresa" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-email">Seu melhor E-mail:</label>
+                        <input type="email" id="form-email" name="email" placeholder="exemplo@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-telefone">Seu WhatsApp para contato:</label>
+                        <input type="tel" id="form-telefone" name="telefone" placeholder="(XX) 99999-9999" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="form-redes">Link do seu site ou @ do Instagram:</label>
+                        <input type="text" id="form-redes" name="redes" placeholder="exemplo.com ou @exemplo" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="form-faturamento">Qual sua média de faturamento mensal?</label>
+                        <select id="form-faturamento" name="faturamento" required>
+                            <option value="" disabled selected>Selecionar faturamento</option>
+                            <option value="0-10k">Até R$10.000</option>
+                            <option value="10k-25k">Entre R$10.000 e R$25.000</option>
+                            <option value="25k-50k">Entre R$25.000 e R$50.000</option>
+                            <option value="50k-100k">Entre R$50.000 e R$100.000</option>
+                            <option value="100k-500k">Entre R$100.000 e R$500.000</option>
+                            <option value="500k-1m">Entre R$500.000 e R$1 milhão</option>
+                            <option value="1m-plus">Mais de R$1 milhão</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="cta-button">Quero meu Diagnóstico Estratégico!</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
-
     <!-- Formulário CTA Fixo -->
     <div id="formModal" class="modal">
         <div class="modal-content">
