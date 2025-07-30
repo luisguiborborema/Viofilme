@@ -1,3 +1,4 @@
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -15,17 +16,12 @@ body {
 
 /* --- Header --- */
 header {
-    background-color: #f1f1f1;
+    background-color: #f1f1f1; /* Fundo branco para o header */
+    padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
     z-index: 1000;
-    
-    /* MUDANÇAS PRINCIPAIS AQUI */
-    display: flex; /* Tornamos o header um container flex para alinhar o conteúdo */
-    align-items: center; /* Centraliza verticalmente o .header-container */
-    height: 80px; /* ALTURA MÍNIMA INICIAL - ajuste se desejar */
-    transition: height 0.4s ease, box-shadow 0.4s ease; /* Transição para a altura */
 }
 .header-container {
     max-width: 1200px;
@@ -36,16 +32,16 @@ header {
     align-items: center;
 }
 header.scrolled {
-    height: 55px; /* ALTURA MÍNIMA ENCOLHIDA - ajuste se desejar */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 5px 0; /* Padding menor */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra mais pronunciada */
 }
 
 header.scrolled .logo-img {
-    max-width: 30px; /* Logo menor quando scrollado */
+    max-width: 60px; /* Logo menor quando scrollado */
 }
 
 header.scrolled .main-nav ul li a {
-    font-size: 0.9em; /* Texto do menu menor */
+    font-size: 0.85em; /* Texto do menu menor */
 }
 
 header.scrolled .cta-button.header-cta {
@@ -159,21 +155,21 @@ header.scrolled .cta-button.header-cta {
     letter-spacing: 2px;
 }
 .hero h1 {
-    font-size: 4em; /* Viofilme */
+    font-size: 3.2em; /* Viofilme */
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 20px;
     color: #f1f1f1;
 }
 .hero h2 {
-    font-size: 2.5em; /* Criamos marketing que vende... */
+    font-size: 2em; /* Criamos marketing que vende... */
     font-weight: 600;
     line-height: 1.3;
     margin-bottom: 30px;
     color: #f1f1f1; /* Sub-título */
 }
 .hero-subheadline {
-    font-size: 1.4em; /* Unimos estratégia... */
+    font-size: 1.2em; /* Unimos estratégia... */
     line-height: 1.6;
     max-width: 700px;
     margin: 0 auto 50px auto;
@@ -191,7 +187,7 @@ header.scrolled .cta-button.header-cta {
     padding: 80px 20px;
 }
 .pain-points-section h2 {
-    font-size: 2.8em;
+    font-size: 2.4em;
     color: #458f8e; /* Cor do título (Principal) */
     margin-bottom: 20px;
 }
@@ -280,7 +276,7 @@ header.scrolled .cta-button.header-cta {
     color: #f1f1f1; /* Texto secundário/claro */
 }
 .pillars-intro-section h2 {
-    font-size: 2.8em;
+    font-size: 2.4em;
     color: #f1f1f1; /* Cor do título (Secundária) */
     margin-bottom: 20px;
 }
@@ -333,7 +329,7 @@ header.scrolled .cta-button.header-cta {
 }
 
 .pillar-text h2 {
-    font-size: 2.5em;
+    font-size: 2em;
     color: #458f8e; /* Cor do título (Principal) */
     margin-bottom: 20px;
     text-align: left;
@@ -394,7 +390,7 @@ header.scrolled .cta-button.header-cta {
 }
 
 .philosophy-section h2 {
-    font-size: 2.8em;
+    font-size: 2.4em;
     color: #f1f1f1;
     margin-bottom: 20px;
 }
@@ -473,7 +469,7 @@ header.scrolled .cta-button.header-cta {
 }
 
 .process-section h2 {
-    font-size: 2.8em;
+    font-size: 2.4em;
     color: #458f8e;
     margin-bottom: 20px;
 }
@@ -542,7 +538,7 @@ header.scrolled .cta-button.header-cta {
 }
 
 .cases-section h2 {
-    font-size: 2.8em;
+    font-size: 2.4em;
     color: #f1f1f1;
     margin-bottom: 50px;
 }
@@ -758,6 +754,19 @@ header.scrolled .cta-button.header-cta {
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     text-align: left;
+}
+/* --- ESTILOS PARA VALIDAÇÃO DE FORMULÁRIO --- */
+
+/* Estiliza campos obrigatórios que estão inválidos (vazios) com uma borda vermelha */
+.form-container input:invalid,
+.form-container select:invalid {
+  border-color: #e74c3c; /* Um tom de vermelho para o erro */
+}
+
+/* Opcional: Adiciona uma sombra sutil ao campo inválido quando o usuário clica nele */
+.form-container input:invalid:focus,
+.form-container select:invalid:focus {
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
 }
 
 .contact-form-section form {
