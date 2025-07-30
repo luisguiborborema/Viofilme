@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // --- FUNÇÃO AUXILIAR DE THROTTLE (NOVA) ---
+    // --- FUNÇÃO AUXILIAR DE THROTTLE ---
     // Esta função controla a frequência com que uma outra função pode ser executada.
     function throttle(func, limit) {
         let inThrottle;
@@ -158,16 +158,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Funcionalidade para a barra fixa parar na seção FAQ ---
     const fixedCtaBar = document.getElementById('fixedCtaBar');
     const faqSection = document.querySelector('#faq');
-    const footer = document.querySelector('footer.main-footer');
 
-    if (fixedCtaBar && footer) {
+    if (fixedCtaBar && faqSection) {
         function handleFixedCtaBarStop() {
-            const barHeight = fixedCtaBar.offsetHeight;
-            const footerTop = footer.getBoundingClientRect().top;
             const windowHeight = window.innerHeight;
+            const faqSectionTop = faqSection.getBoundingClientRect().top;
 
-            if (footerTop < windowHeight) {
-                fixedCtaBar.style.transform = `translate(-50%, ${footerTop - windowHeight}px)`;
+            if (faqSectionTop < windowHeight) {
+                fixedCtaBar.style.transform = `translate(-50%, ${faqSectionTop - windowHeight}px)`;
             } else {
                 fixedCtaBar.style.transform = 'translateX(-50%)';
             }
