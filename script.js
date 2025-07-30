@@ -159,14 +159,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
      // --- Funcionalidade para a barra fixa parar na seção FAQ (agora, no rodapé) ---
     const fixedCtaBar = document.getElementById('fixedCtaBar'); // Seleciona a barra
-    const footer = document.querySelector('footer'); // O rodapé
+    const faqSection = document.querySelector('#faq'); // O rodapé
     const defaultBottomOffset = 20; // Corresponde ao 'bottom' definido no CSS para .fixed-cta-bar
 
-    if (fixedCtaBar && footer) {
+    if (fixedCtaBar && faqSection) {
         function handleFixedCtaBarStop() {
             const scrollPosition = window.scrollY || window.pageYOffset;
-            const footerTop = footer.offsetTop; // Topo do rodapé
-            const barHeight = fixedCtaBar.offsetHeight; // Altura da barra
+            const faqSectionTop = faqSection.offsetTop; // Topo do rodapé
             const windowHeight = window.innerHeight; // Altura da viewport
 
             // Calcula o ponto de rolagem onde o *fundo da barra* (se fixed)
@@ -174,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Queremos que a barra pare com `defaultBottomOffset` de distância do topo do rodapé.
             // Então, a barra irá "colar" quando o (scrollPosition + windowHeight) atingir:
             // (footerTop - defaultBottomOffset)
-            const stopPoint = footerTop - defaultBottomOffset;
+            const stopPoint = faqSectionTop - defaultBottomOffset;
 
             // Se a parte inferior da viewport (scrollPosition + windowHeight)
             // estiver abaixo ou no ponto onde a barra deve parar
@@ -185,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Calculamos o 'bottom' em relação ao documento (ou ao pai com position: relative, geralmente body/html)
                 // É a distância do final do documento até o topo do rodapé, mais a margem desejada.
-                fixedCtaBar.style.bottom = `${(document.body.scrollHeight - footerTop) + defaultBottomOffset}px`;
+                fixedCtaBar.style.bottom = `${(document.body.scrollHeight - faqSectionTop) + defaultBottomOffset}px`;
             } else {
                 fixedCtaBar.style.position = 'fixed';
                 fixedCtaBar.style.bottom = `${defaultBottomOffset}px`; // Volta à posição fixa original
