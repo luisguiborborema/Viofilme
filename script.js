@@ -3,9 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // VARIÁVEIS GLOBAIS 
     const header = document.querySelector('header');
     const navLinks = document.querySelectorAll('.main-nav ul li a');
-    const sections = document.querySelectorAll('section[id]');
-    // FIM DO BLOCO A SER ADICIONADO
-        
+    const sections = document.querySelectorAll('section[id]');        
         
     // --- Marcar Link da Navbar Ativo (Scrollspy) ---
     function activateNavLinkOnScroll() {
