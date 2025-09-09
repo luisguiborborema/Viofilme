@@ -1548,32 +1548,32 @@ body.dark-mode .footer-phone a:hover {
         font-size: 0.95em;
     }
 }
-@media (max-width: 900px) { /* OU 850px, TESTE QUAL FUNCIONA MELHOR */
+@media (max-width: 900px) {
+
+    /* ============================================= */
+    /* 1. AJUSTES GERAIS DE LAYOUT PARA MOBILE       */
+    /* ============================================= */
+
+    /* Passa as seções principais para o layout de coluna */
     .pain-points-layout,
     .pillar-section .container,
     .cases-section .cases-layout-container {
         flex-direction: column;
-        align-items: center; /* Centraliza os itens após a mudança de direção */
+        align-items: center;
     }
 
-    /* Seções de pilares: ajustar ordem da imagem para mobile */
-    .pillar-content-left .pillar-image {
-        order: 1;
-    }
-    .pillar-content-left .pillar-text {
-        order: 2;
-        text-align: center; /* Se quiser centralizar o texto também */
-    }
-
+    /* Inverte a ordem de imagem e texto nas seções de pilares */
+    .pillar-content-left .pillar-image,
     .pillar-content-right .pillar-image {
         order: 1;
     }
+    .pillar-content-left .pillar-text,
     .pillar-content-right .pillar-text {
         order: 2;
-        text-align: center; /* Se quiser centralizar o texto também */
+        text-align: center;
     }
 
-    /* O carrossel também pode precisar de ajuste se não estiver quebrando direito */
+    /* Ajusta o carrossel "Antes e Depois" para o layout de coluna */
     .before-after-carousel {
         flex-direction: column;
         align-items: center;
@@ -1583,25 +1583,35 @@ body.dark-mode .footer-phone a:hover {
         max-width: 100%;
         gap: 0;
     }
-    .before-image, .after-image{
+    .before-image, .after-image {
         width: 100%;
     }
+
+    /* ============================================= */
+    /* 2. HEADER E BOTÃO HAMBÚRGUER                  */
+    /* ============================================= */
+
     .header-container {
-        position: relative; /* Necessário para posicionar o botão hambúrguer */
+        position: relative;
         padding-top: 20px;
         padding-bottom: 20px;
     }
-    
+
+    /* Exibe o botão hambúrguer */
     .hamburger-button {
-        display: flex; /* Mostra o botão hambúrguer em telas menores */
+        display: flex;
     }
 
-    /* Oculta o CTA do header para dar espaço */
+    /* Oculta o botão "Quero meu Diagnóstico!" do header */
     .cta-button.header-cta {
         display: none;
     }
 
-    /* Estiliza a navegação principal para ser o menu mobile */
+    /* ============================================= */
+    /* 3. MENU DE NAVEGAÇÃO MOBILE (PAINEL LATERAL)  */
+    /* ============================================= */
+
+    /* Estilo do painel do menu que desliza para a tela */
     .main-nav {
         position: fixed;
         top: 0;
@@ -1609,67 +1619,85 @@ body.dark-mode .footer-phone a:hover {
         width: 100%;
         height: 100vh;
         background-color: #f1f1f1;
-        
-        /* Começa fora da tela (escondido) */
         transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
-        
         display: flex;
         justify-content: center;
         align-items: center;
-        order: 3; /* Garante que fique depois de outros elementos flex */
+        order: 3;
     }
 
-    /* Quando o menu está ativo, ele desliza para a tela */
     .main-nav.active {
         transform: translateX(0);
     }
 
-    /* Ajusta a lista de links para o layout vertical */
+    /* Estilo da lista de links (UL) */
     .main-nav ul {
-        list-style: none; /* Garante que não haja marcadores de lista */
-        padding: 0;       /* ESSA É A CORREÇÃO: remove o padding que deslocava o texto */
-        margin: 0;        /* Zera a margem por segurança */
+        list-style: none;
+        padding: 0;
+        margin: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 30px;
     }
+
+    /* --- ESTILOS CORRIGIDOS E UNIFICADOS PARA OS ITENS DO MENU --- */
+
+    /* Regra Unificada para links e o botão (Base) */
     .main-nav ul li a,
-    #darkModeToggleMobile {
-    font-weight: 600;
-    font-size: clamp(1.2rem, 5vw, 1.6rem);
-    color: #000000;
-    text-decoration: none;
-    /* Adicionado para garantir alinhamento vertical do ícone */
-    display: inline-flex;
+    .main-nav ul li #darkModeToggleMobile {
+        font-weight: 600;
+        font-size: clamp(1.2rem, 5vw, 1.6rem);
+        color: #000000;
+        text-decoration: none;
+        line-height: 1.5; /* Garante que todos os itens tenham a mesma altura */
     }
-    #darkModeToggleMobile {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif; /* Apenas o botão precisa da fonte declarada aqui */
-    gap: 8px; /* Reduzimos o espaço entre o ícone e o texto */
-    }
-
-    /* 3. (Opcional, mas recomendado) ADICIONE para ajustar o tamanho do ícone */
-    #darkModeToggleMobile i {
-        font-size: 0.9em; /* Deixa o ícone proporcional ao texto */
-    }
-
+    
     .main-nav ul li a.active {
         border-bottom: 3px solid #458f8e;
     }
-    
-    /* Esconde o botão de toggle do HEADER em telas pequenas */
+
+    /* Regra Específica para o Botão Dark Mode (Layout e Reset) */
+    #darkModeToggleMobile {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: auto;
+    }
+
+    /* Regra Específica para o ÍCONE dentro do botão */
+    #darkModeToggleMobile i {
+        font-size: 0.9em; /* Ícone proporcional ao texto */
+        line-height: 1;   /* Remove altura extra do ícone para alinhamento perfeito */
+    }
+
+    /* ============================================= */
+    /* 4. VISIBILIDADE DOS BOTÕES DARK MODE          */
+    /* ============================================= */
+
+    /* Esconde o botão dark mode do desktop */
     #darkModeToggle {
         display: none;
     }
 
-    /* Mostra o botão de toggle do MENU em telas pequenas */
+    /* Mostra o item da lista (li) que contém o botão dark mode mobile */
     .dark-mode-toggle-mobile-li {
         display: list-item;
+    }
+
+    /* ============================================= */
+    /* 5. CORES DO DARK MODE PARA O MENU MOBILE      */
+    /* ============================================= */
+
+    body.dark-mode .main-nav {
+        background-color: #1c1c1c;
     }
 
     body.dark-mode .main-nav ul li a,
@@ -1677,6 +1705,7 @@ body.dark-mode .footer-phone a:hover {
         color: #e0e0e0;
     }
 }
+
 @media (max-width: 768px) { /* Tablet Portrait e Mobile */
     .header-container {
         flex-direction: row;
