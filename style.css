@@ -1700,9 +1700,14 @@ body.dark-mode .footer-phone a:hover {
         background-color: #1c1c1c;
     }
 
-    body.dark-mode .main-nav ul li a,
-    body.dark-mode #darkModeToggleMobile {
-        color: #e0e0e0;
+   /* Garante que os links fiquem brancos */
+    body.dark-mode .main-nav ul li a {
+        color: #FFFFFF !important;
+    }
+
+    /* Garante que o BOTÃO também fique branco, com um seletor mais forte */
+    body.dark-mode .main-nav ul li #darkModeToggleMobile {
+        color: #FFFFFF !important;
     }
 }
 
